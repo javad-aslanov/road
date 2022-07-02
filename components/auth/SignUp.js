@@ -39,13 +39,11 @@ const SignUp = () => {
     } else if (password.length < 8) {
       Alert.alert("Password should be at least 8 characters long");
     } else {
-      nav.dispatch(
-        StackActions.push("Quiz", {
-          username,
-          age,
-          password,
-        })
-      );
+      nav.dispatch(StackActions.push("Quiz"), {
+        username,
+        age,
+        password,
+      });
     }
   };
   const navToSignIn = () => {
@@ -197,15 +195,15 @@ const SignUp = () => {
       </Svg>
       <ScrollView contentContainerStyle={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Sign Up</Text>
+          <Text style={styles.title}>Зарегистрироваться</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Username</Text>
+              <Text style={styles.textInputLabel}>Имя пользователя</Text>
               <TextInput onChangeText={setUsername} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Age</Text>
+              <Text style={styles.textInputLabel}>Возраст</Text>
               <TextInput
                 onChangeText={setAge}
                 keyboardType="number-pad"
@@ -214,7 +212,7 @@ const SignUp = () => {
             </View>
 
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Password</Text>
+              <Text style={styles.textInputLabel}>Пароль</Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -222,7 +220,7 @@ const SignUp = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Repeat Password</Text>
+              <Text style={styles.textInputLabel}>Повторите пароль</Text>
               <TextInput
                 onChangeText={setPasswordRepeat}
                 secureTextEntry
@@ -231,7 +229,7 @@ const SignUp = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signUpUser}>
-              <Text style={styles.btnText}>Sign Up</Text>
+              <Text style={styles.btnText}>Зарегистрироваться</Text>
             </TouchableOpacity>
           </View>
 
@@ -243,8 +241,7 @@ const SignUp = () => {
                 fontFamily: "roboto",
               }}
             >
-              Alread have an account?{" "}
-              <Text style={{ color: "white" }}>Sign In</Text>
+              Уже есть аккаунт? <Text style={{ color: "white" }}>Войти</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>

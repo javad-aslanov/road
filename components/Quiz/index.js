@@ -15,6 +15,57 @@ import { StackActions, useNavigation } from "@react-navigation/native";
 import firebase from "firebase";
 import * as Haptics from "expo-haptics";
 import { FIREBASE_PATH_USERS } from "../../constants/firebase";
+
+function determineLevel(x) {
+  var level = "";
+  if (x.category === emotional) {
+    if (x.weight <= 3 && x.weight >= 0) {
+      level = "normal";
+    } else if (x.weight === 4) {
+      level = "barely";
+    } else if (x.weight >= 5 && x.weight <= 10) {
+      level = "abnormal";
+    }
+  }
+  if (x.category === behaviour) {
+    if (x.weight <= 2 && x.weight >= 0) {
+      level = "normal";
+    } else if (x.weight === 3) {
+      level = "barely";
+    } else if (x.weight >= 4 && x.weight <= 10) {
+      level = "abnormal";
+    }
+  }
+  if (x.category === hyperactive) {
+    if (x.weight <= 5 && x.weight >= 0) {
+      level = "normal";
+    } else if (x.weight === 6) {
+      level = "barely";
+    } else if (x.weight >= 7 && x.weight <= 10) {
+      level = "abnormal";
+    }
+  }
+  if (x.category === communication) {
+    if (x.weight <= 2 && x.weight >= 0) {
+      level = "normal";
+    } else if (x.weight === 3) {
+      level = "barely";
+    } else if (x.weight >= 4 && x.weight <= 10) {
+      level = "abnormal";
+    }
+  }
+  if (x.category === prosocial) {
+    if (x.weight <= 10 && x.weight >= 6) {
+      level = "normal";
+    } else if (x.weight === 5) {
+      level = "barely";
+    } else if (x.weight >= 0 && x.weight <= 4) {
+      level = "abnormal";
+    }
+  }
+  return level;
+}
+
 const emotional = "emotional";
 const behaviour = "behaviour";
 const hyperactive = "hyperactive";
@@ -204,6 +255,11 @@ const Index = (props) => {
         props.route.params.username + "@gmail.com",
         props.route.params.password
       );
+    result = result.map((x) => {
+      let level = determineLevel(x);
+
+      return { ...x, level };
+    });
     await firebase
       .firestore()
       .collection(FIREBASE_PATH_USERS)
@@ -221,6 +277,8 @@ const Index = (props) => {
     setIsSelectedAnswer(false);
   }
   function setSelectedAnswer(index, questionIndex) {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+
     let temp = questions;
     temp[questionIndex].selectedAnswer = index;
     setQuestions(temp);
@@ -247,7 +305,7 @@ const Index = (props) => {
 
       <View style={styles.selectContainer}>
         <View style={styles.infoContainer}>
-          <Text style={styles.selectText}>Select an answer</Text>
+          <Text style={styles.selectText}>Выберите ответ✨</Text>
           <Text style={styles.questionText}>{questions[index].question}</Text>
           <View style={styles.answers}>
             {questions[index].answers.map((answer, ind) => (
@@ -314,7 +372,7 @@ const Index = (props) => {
                   : [styles.backText, styles.disabledText]
               }
             >
-              Back
+              Назад
             </Text>
           </TouchableOpacity>
           {loading ? (
@@ -352,7 +410,7 @@ const Index = (props) => {
                     : [styles.nextText, styles.disabledText]
                 }
               >
-                {index === questions.length - 1 ? "Finish" : "Next"}
+                {index === questions.length - 1 ? "Закончить" : "Вперед"}
               </Text>
             </TouchableOpacity>
           )}

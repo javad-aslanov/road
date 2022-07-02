@@ -93,14 +93,14 @@ export default StyleSheet.create({
     color: "lightgrey",
   },
   disabled: {
-    backgroundColor: "rgba(0, 82, 255, 0.1)",
-    borderColor: "white",
+    backgroundColor: "rgba(255,198,0, 0.1)",
+    borderColor: "#FFC600",
   },
   enabledText: {
     color: "white",
   },
   enabled: {
-    backgroundColor: AZURE_BLUE,
-    borderColor: AZURE_BLUE,
+    backgroundColor: "#FFC600",
+    borderColor: "#FFC600",
   },
 });

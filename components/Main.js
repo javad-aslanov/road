@@ -10,23 +10,28 @@ const Main = () => {
       .collection(FIREBASE_PATH_USERS)
       .doc(firebase.auth().currentUser.uid)
       .onSnapshot((snap) => {
-        setUser(snap.data());
+        setUser({ ...snap.data() });
       });
     return unsub;
   }, []);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: "#121B44", flex: 1 }}>
       {user ? (
         <View
           style={{
-            backgroundColor: "white",
             flex: 1,
             justifyContent: "space-around",
           }}
         >
           {user.scores.map((x) => (
-            <Text style={{ fontFamily: "roboto_bold" }}>
-              {x.category + ": " + x.weight}
+            <Text
+              style={{
+                fontFamily: "roboto_bold",
+                color: "white",
+                fontSize: 20,
+              }}
+            >
+              {x.category + ": " + x.weight + " " + x.level}
             </Text>
           ))}
         </View>

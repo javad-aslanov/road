@@ -15,7 +15,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import { useFonts } from "expo-font";
 import Quiz from "./components/Quiz";
-
+import Personality from "./components/Personality";
 const firebaseConfig = {
   apiKey: "AIzaSyByYPKLWwts8c3ZGi_PWcca0ScIDzBYkVM",
   authDomain: "road-f380a.firebaseapp.com",
@@ -57,7 +57,13 @@ export default function App() {
       {user ? (
         <>
           <Stack.Navigator>
-            <Stack.Screen name="Main" component={Main} />
+            <Stack.Screen
+              name="Main"
+              component={Main}
+              options={{
+                headerShown: false,
+              }}
+            />
           </Stack.Navigator>
         </>
       ) : (

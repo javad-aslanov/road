@@ -168,11 +168,11 @@ const SignIn = () => {
       </Svg>
       <ScrollView contentContainerStyle={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Sign In</Text>
+          <Text style={styles.title}>Войти</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Username</Text>
+              <Text style={styles.textInputLabel}>Имя пользователя</Text>
               <TextInput
                 onChangeText={setUsername}
                 placeholderTextColor="white"
@@ -182,7 +182,7 @@ const SignIn = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Password</Text>
+              <Text style={styles.textInputLabel}>Пароль</Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -194,7 +194,7 @@ const SignIn = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signInUser}>
-              <Text style={styles.btnText}>Sign In</Text>
+              <Text style={styles.btnText}>Войти</Text>
             </TouchableOpacity>
           </View>
 
@@ -206,8 +206,8 @@ const SignIn = () => {
                 fontFamily: "roboto",
               }}
             >
-              Don't have an account?{" "}
-              <Text style={{ color: "white" }}>Sign Up</Text>
+              Нет аккаунта?{" "}
+              <Text style={{ color: "white" }}>Зарегистрироваться</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>
