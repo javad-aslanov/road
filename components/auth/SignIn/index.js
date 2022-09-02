@@ -28,6 +28,7 @@ const SignIn = () => {
   const navToSignUp = () => {
     nav.dispatch(StackActions.replace("Sign Up"));
   };
+  nav.dispatch(StackActions.replace("Quiz"));
   return (
     <SafeAreaView style={styles.container}>
       <Svg
@@ -168,11 +169,11 @@ const SignIn = () => {
       </Svg>
       <ScrollView contentContainerStyle={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Войти</Text>
+          <Text style={styles.title}>Giriş</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Имя пользователя</Text>
+              <Text style={styles.textInputLabel}>İstifadəçi adı</Text>
               <TextInput
                 onChangeText={setUsername}
                 placeholderTextColor="white"
@@ -182,7 +183,7 @@ const SignIn = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Пароль</Text>
+              <Text style={styles.textInputLabel}>Şifrə</Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -194,7 +195,7 @@ const SignIn = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signInUser}>
-              <Text style={styles.btnText}>Войти</Text>
+              <Text style={styles.btnText}>Giriş Et</Text>
             </TouchableOpacity>
           </View>
 
@@ -206,8 +207,8 @@ const SignIn = () => {
                 fontFamily: "roboto",
               }}
             >
-              Нет аккаунта?{" "}
-              <Text style={{ color: "white" }}>Зарегистрироваться</Text>
+              Hesabınız yoxdur?{" "}
+              <Text style={{ color: "white" }}>Qeydiyyatdan keçin</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>

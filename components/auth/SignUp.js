@@ -27,23 +27,36 @@ const SignUp = () => {
   const nav = useNavigation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
   const [age, setAge] = useState(0);
   const [passwordRepeat, setPasswordRepeat] = useState("");
-  const signUpUser = () => {
+  const signUpUser = async () => {
     if (username.length <= 3) {
-      Alert.alert("Error", "Username should be at least 3 characters long.");
+      Alert.alert("İstifadəçi adı ən azı 3 simvol uzunluğunda olmalıdır.");
     } else if (age < 13 || age > 17) {
-      Alert.alert("You should be 13 to 17 years old to use this app.");
+      Alert.alert("Bu tətbiqin yaş tələblərinə uyğun deyilsiz");
     } else if (password !== passwordRepeat) {
-      Alert.alert("Password and password repeat should be the same value");
+      Alert.alert("Şifrə və şifrənin təkrarı eyni dəyərdə olmalıdır");
     } else if (password.length < 8) {
-      Alert.alert("Password should be at least 8 characters long");
+      Alert.alert("Şifrə ən azı 8 simvol uzunluğunda olmalıdır");
+    } else if (!(code.length > 0)) {
+      Alert.alert("Məktəb kodunu daxil edin");
     } else {
-      nav.dispatch(StackActions.push("Quiz"), {
-        username,
-        age,
-        password,
-      });
+      setLoading(true);
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(username + "@gmail.com", password);
+
+      await firebase
+        .firestore()
+        .collection(FIREBASE_PATH_USERS)
+        .doc(firebase.auth().currentUser.uid)
+        .set({
+          uid: firebase.auth().currentUser.uid,
+          username: username,
+          age: age,
+          code: code,
+        });
     }
   };
   const navToSignIn = () => {
@@ -195,15 +208,19 @@ const SignUp = () => {
       </Svg>
       <ScrollView contentContainerStyle={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Зарегистрироваться</Text>
+          <Text style={styles.title}>Qeydiyyat</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Имя пользователя</Text>
+              <Text style={styles.textInputLabel}>İstifadəçi adı</Text>
               <TextInput onChangeText={setUsername} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Возраст</Text>
+              <Text style={styles.textInputLabel}>Məktəb kodu</Text>
+              <TextInput onChangeText={setCode} style={styles.textInput} />
+            </View>
+            <View style={styles.textInputContainer}>
+              <Text style={styles.textInputLabel}>Yaş</Text>
               <TextInput
                 onChangeText={setAge}
                 keyboardType="number-pad"
@@ -212,7 +229,7 @@ const SignUp = () => {
             </View>
 
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Пароль</Text>
+              <Text style={styles.textInputLabel}>Şifrə</Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -220,7 +237,7 @@ const SignUp = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Повторите пароль</Text>
+              <Text style={styles.textInputLabel}>Şifrə</Text>
               <TextInput
                 onChangeText={setPasswordRepeat}
                 secureTextEntry
@@ -229,7 +246,7 @@ const SignUp = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signUpUser}>
-              <Text style={styles.btnText}>Зарегистрироваться</Text>
+              <Text style={styles.btnText}>Təsdiq et</Text>
             </TouchableOpacity>
           </View>
 
@@ -241,7 +258,7 @@ const SignUp = () => {
                 fontFamily: "roboto",
               }}
             >
-              Уже есть аккаунт? <Text style={{ color: "white" }}>Войти</Text>
+              Hesabınız var? <Text style={{ color: "white" }}>Giriş edin</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>

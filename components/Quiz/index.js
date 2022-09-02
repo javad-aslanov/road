@@ -22,7 +22,7 @@ function determineLevel(x) {
     if (x.weight <= 3 && x.weight >= 0) {
       level = "normal";
     } else if (x.weight === 4) {
-      level = "barely";
+      level = "barely normal";
     } else if (x.weight >= 5 && x.weight <= 10) {
       level = "abnormal";
     }
@@ -31,7 +31,7 @@ function determineLevel(x) {
     if (x.weight <= 2 && x.weight >= 0) {
       level = "normal";
     } else if (x.weight === 3) {
-      level = "barely";
+      level = "barely normal";
     } else if (x.weight >= 4 && x.weight <= 10) {
       level = "abnormal";
     }
@@ -40,7 +40,7 @@ function determineLevel(x) {
     if (x.weight <= 5 && x.weight >= 0) {
       level = "normal";
     } else if (x.weight === 6) {
-      level = "barely";
+      level = "barely normal";
     } else if (x.weight >= 7 && x.weight <= 10) {
       level = "abnormal";
     }
@@ -49,7 +49,7 @@ function determineLevel(x) {
     if (x.weight <= 2 && x.weight >= 0) {
       level = "normal";
     } else if (x.weight === 3) {
-      level = "barely";
+      level = "barely normal";
     } else if (x.weight >= 4 && x.weight <= 10) {
       level = "abnormal";
     }
@@ -58,7 +58,7 @@ function determineLevel(x) {
     if (x.weight <= 10 && x.weight >= 6) {
       level = "normal";
     } else if (x.weight === 5) {
-      level = "barely";
+      level = "barely normal";
     } else if (x.weight >= 0 && x.weight <= 4) {
       level = "abnormal";
     }
@@ -74,156 +74,181 @@ const prosocial = "prosocial";
 const initialQuestions = [
   {
     question:
-      "Я стараюсь быть хорошим/ей c другими людьми. Я внимателен/на к их чувствам",
-    answers: ["Верно", "Отчасти верно", "Неверно"],
+      "Başqalarına yaxşı davranmağa çalışıram. Onların hissləri ilə maraqlanıram",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я неугомонный/ая, не могу долго оставаться спокойным/ой",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Mən narahatam, uzun müddət sakit qala bilmirəm",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "У меня часто бывают головные боли, боли в животе и тошнота",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Tez-tez baş ağrılar və ya ürək bulamalarım olur",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я обычно делюсь с другими (едой, играми, ручками и др.)",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question:
+      "Mən adətən başqaları ilə paylaşıram (yemək, oyunlar, qələmlər və s.)",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я сильно сержусь, раздражаюсь и выхожу из себя",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Çox əsəbiləşirəm və özümü itirirəm",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question:
-      "Я обычно один/одна. Чаще всего я играю в одиночестве и занимаюсь сам/а",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Mən adətən tək oluram. Çox vaxt tək oynayıram və dərs oxuyuram",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
     answerWeight: [0, 1, 2],
-    question: "Я обычно делаю то, что мне говорят",
+    question: "Mən adətən mənə deyilənləri edirəm",
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я много беспокоюсь",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Mən çox vaxtı narahat oluram",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я пытаюсь помочь, если кто-нибудь расстроен, обижен или болен",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question:
+      "Kiminsə əsəbləşdiyi, incidiyi və ya xəstə olduğu halda kömək etməyə çalışıram",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я постоянно ерзаю и верчусь",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Davamlı olaraq başım gicəllənir",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "У меня есть по крайней мере один хороший друг",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Ən azı bir yaxşı dostum var",
     answerWeight: [0, 1, 2],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question:
-      "Я много дерусь. Я могу заставить других людей делать то, что я хочу",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "İstədiyimi başqalarına etdirə bilərəm",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question:
-      "Я часто чувствую себя несчастным/ой, унылым/ой, готов/а расплакаться",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Tez-tez özümü bədbəxt, kədərli, ağlamağa hazır hiss edirəm",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я обычно нравлюсь своим сверстникам",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Mən adətən həmyaşıdlarımı bəyənirəm",
     answerWeight: [0, 1, 2],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я легко отвлекаюсь, мне трудно сосредоточиться",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question:
+      "Diqqətim asanlıqla dağılır və diqqətimi cəmləməkdə çətinlik çəkirəm",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я нервничаю в новой обстановке, легко теряю уверенность",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Yeni mühitlərdə əsəbi oluram, inamımı asanlıqla itirirəm",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я добр/а к младшим детям",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Kiçik uşaqlara qarşı mehribanam",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Меня часто обвиняют во лжи или обмане",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Mən tez-tez yalan danışıram və aldadıram",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Другие часто дразнят или задирают меня",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Başqalar tez-tez mənə sataşırlar və ya təhqir edirlər",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я часто вызываюсь помочь другим (родителям, учителям, детям)",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question:
+      "Mən tez-tez başqalarına kömək edirəm (valideynlərə, müəllimlərə, uşaqlara)",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я думаю прежде чем действовать",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Hərəkət etməzdən əvvəl düşünürəm",
     answerWeight: [0, 1, 2],
     category: hyperactive,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я беру чужие вещи из дома, школы и других мест",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question:
+      "Evdən, məktəbdən və başqa yerlərdən başqalarının əşyalarını götürürəm",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "У меня лучше отношения со взрослыми, чем со сверстниками",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Yaşıdlarla müqayisədə böyüklərlə münasibətim daha yaxşıdır",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я многого боюсь, легко пугаюсь",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Çox şeydən qorxuram",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question:
-      "Я делаю до конца работу, которую начал/а. У меня хорошее внимание.",
+    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+
+    question: "Başladığım işi başa çatdırıram. Diqqətim yaxşıdır.",
     answerWeight: [0, 1, 2],
     category: hyperactive,
   },
@@ -296,7 +321,7 @@ const Index = (props) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.progress}>
         <Text style={styles.progressText}>
-          {index + 1} of {questions.length}
+          {index + 1} из {questions.length}
         </Text>
         <View>
           <Progress step={index + 1} steps={questions.length} height={30} />

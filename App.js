@@ -7,7 +7,11 @@ import {
   Text,
   View,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
 import firebase from "firebase";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Main from "./components/Main";
