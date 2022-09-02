@@ -12,6 +12,7 @@ import {
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
+import Tabs from "./components/Tabs";
 import firebase from "firebase";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Main from "./components/Main";
@@ -62,30 +63,11 @@ export default function App() {
         <>
           <Stack.Navigator>
             <Stack.Screen
-              name="Main"
-              component={Main}
+              name="Tabs"
+              component={Tabs}
               options={{
                 headerShown: false,
               }}
-            />
-          </Stack.Navigator>
-        </>
-      ) : (
-        <>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Sign In"
-              options={{
-                headerShown: false,
-              }}
-              component={SignIn}
-            />
-            <Stack.Screen
-              name="Sign Up"
-              options={{
-                headerShown: false,
-              }}
-              component={SignUp}
             />
             <Stack.Screen
               component={Quiz}
@@ -93,6 +75,26 @@ export default function App() {
                 headerShown: false,
               }}
               name="Quiz"
+            />
+          </Stack.Navigator>
+        </>
+      ) : (
+        <>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Sign Up"
+              options={{
+                headerShown: false,
+              }}
+              component={SignUp}
+            />
+
+            <Stack.Screen
+              name="Sign In"
+              options={{
+                headerShown: false,
+              }}
+              component={SignIn}
             />
           </Stack.Navigator>
         </>

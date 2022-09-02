@@ -274,12 +274,6 @@ const Index = (props) => {
       res[value.category].weight += value.weight;
       return res;
     }, {});
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(
-        props.route.params.username + "@gmail.com",
-        props.route.params.password
-      );
     result = result.map((x) => {
       let level = determineLevel(x);
 
@@ -289,11 +283,9 @@ const Index = (props) => {
       .firestore()
       .collection(FIREBASE_PATH_USERS)
       .doc(firebase.auth().currentUser.uid)
-      .set({
-        uid: firebase.auth().currentUser.uid,
-        username: props.route.params.username,
-        age: props.route.params.age,
+      .update({
         scores: result,
+        completedTests: ["initTest"],
       });
   }
   function next() {
@@ -317,11 +309,12 @@ const Index = (props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {}, [questions, trigger]);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.progress}>
         <Text style={styles.progressText}>
-          {index + 1} из {questions.length}
+          {index + 1} / {questions.length}
         </Text>
         <View>
           <Progress step={index + 1} steps={questions.length} height={30} />
@@ -330,7 +323,7 @@ const Index = (props) => {
 
       <View style={styles.selectContainer}>
         <View style={styles.infoContainer}>
-          <Text style={styles.selectText}>Выберите ответ✨</Text>
+          <Text style={styles.selectText}>Cavab seçin✨</Text>
           <Text style={styles.questionText}>{questions[index].question}</Text>
           <View style={styles.answers}>
             {questions[index].answers.map((answer, ind) => (
@@ -397,7 +390,7 @@ const Index = (props) => {
                   : [styles.backText, styles.disabledText]
               }
             >
-              Назад
+              Arxaya
             </Text>
           </TouchableOpacity>
           {loading ? (
@@ -435,7 +428,7 @@ const Index = (props) => {
                     : [styles.nextText, styles.disabledText]
                 }
               >
-                {index === questions.length - 1 ? "Закончить" : "Вперед"}
+                {index === questions.length - 1 ? "Bitir" : "Növbəti"}
               </Text>
             </TouchableOpacity>
           )}

@@ -56,17 +56,13 @@ const SignUp = () => {
           username: username,
           age: age,
           code: code,
+          completedTests: [],
         });
     }
   };
   const navToSignIn = () => {
     nav.dispatch(StackActions.replace("Sign In"));
   };
-
-  const arr = [];
-  for (let index = 0; index < 50; index++) {
-    arr[index] = randomIntFromInterval(1, 100);
-  }
 
   return (
     <SafeAreaView style={styles.container}>

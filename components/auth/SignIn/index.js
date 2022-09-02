@@ -28,7 +28,6 @@ const SignIn = () => {
   const navToSignUp = () => {
     nav.dispatch(StackActions.replace("Sign Up"));
   };
-  nav.dispatch(StackActions.replace("Quiz"));
   return (
     <SafeAreaView style={styles.container}>
       <Svg
