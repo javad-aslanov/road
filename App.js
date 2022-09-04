@@ -20,7 +20,6 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import { useFonts } from "expo-font";
 import Quiz from "./components/Quiz";
-import Personality from "./components/Personality";
 const firebaseConfig = {
   apiKey: "AIzaSyByYPKLWwts8c3ZGi_PWcca0ScIDzBYkVM",
   authDomain: "road-f380a.firebaseapp.com",
@@ -39,10 +38,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [user, setUser] = useState();
-  const [loaded] = useFonts({
-    roboto: require("./assets/Ubuntu/Ubuntu-Regular.ttf"),
-    roboto_bold: require("./assets/Ubuntu/Ubuntu-Bold.ttf"),
-  });
+  let loaded = true;
 
   function onAuthStateChanged(user) {
     setUser(user);
@@ -102,7 +98,6 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

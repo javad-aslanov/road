@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { AZURE_BLUE, BABY_BLUE } from "../../../constants/colors";
+import { primary } from "../../colors";
 
 export default StyleSheet.create({
   textInput: {
@@ -11,28 +12,27 @@ export default StyleSheet.create({
     borderRadius: 7,
     borderColor: "lightgrey",
     marginVertical: 7,
-    color: "white",
+    color: "black",
   },
 
   container: {
     flex: 1,
-    backgroundColor: "#121B44",
+    backgroundColor: "white",
   },
   title: {
     fontSize: 28,
     fontWeight: "bold",
     paddingBottom: 10,
-    fontFamily: "roboto_bold",
-    color: "white",
+    color: "black",
   },
   textInputLabel: {
-    color: "white",
+    color: "black",
+
     paddingHorizontal: 7,
-    fontFamily: "roboto",
   },
   btn: {
     alignContent: "center",
-    backgroundColor: AZURE_BLUE,
+    backgroundColor: primary,
     justifyContent: "center",
     textAlign: "center",
     borderRadius: 10,
@@ -46,8 +46,8 @@ export default StyleSheet.create({
     alignSelf: "center",
     padding: 10,
     color: "white",
+
     fontWeight: "bold",
     fontSize: 15,
-    fontFamily: "roboto_bold",
   },
 });

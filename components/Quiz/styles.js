@@ -3,7 +3,8 @@ import { AZURE_BLUE } from "../../constants/colors";
 
 export default StyleSheet.create({
   progressText: {
-    fontFamily: "roboto_bold",
+    fontWeight: "bold",
+
     alignSelf: "center",
     marginVertical: 10,
     fontSize: 15,
@@ -41,7 +42,8 @@ export default StyleSheet.create({
     flex: 1,
   },
   questionText: {
-    fontFamily: "roboto_bold",
+    fontWeight: "bold",
+
     fontSize: 17,
     marginVertical: 10,
     color: "white",
@@ -57,7 +59,6 @@ export default StyleSheet.create({
   answerText: {
     paddingLeft: 10,
     alignSelf: "center",
-    fontFamily: "roboto",
     color: "white",
   },
   buttons: {
@@ -69,7 +70,6 @@ export default StyleSheet.create({
     paddingHorizontal: 6,
   },
   backText: {
-    fontFamily: "roboto",
     padding: 10,
     fontSize: 20,
     alignSelf: "center",
@@ -77,7 +77,6 @@ export default StyleSheet.create({
   },
   nextText: {
     fontSize: 20,
-    fontFamily: "roboto",
     padding: 10,
     alignSelf: "center",
   },

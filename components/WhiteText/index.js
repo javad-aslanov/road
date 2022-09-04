@@ -11,6 +11,5 @@ const styles = StyleSheet.create({
   // ... add your default style here
   defaultStyle: {
     color: "black",
-    fontFamily: "roboto",
   },
 });

@@ -4,6 +4,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Main from "../Main";
 import Hotline from "../Hotline";
+import { primary } from "../colors";
 
 const Index = () => {
   const Tab = createBottomTabNavigator();
@@ -22,25 +23,7 @@ const Index = () => {
             if (color === "#8E8E8F") {
               return <Feather name="home" size={size} color={"lightgrey"} />;
             } else {
-              return <Feather name="home" size={size} color={"darkblue"} />;
-            }
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Hotline"
-        component={Hotline}
-        options={{
-          headerStyle: {
-            backgroundColor: "#1A2144",
-          },
-          tabBarShowLabel: false,
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => {
-            if (color === "#8E8E8F") {
-              return <Feather name="phone" size={size} color={"lightgrey"} />;
-            } else {
-              return <Feather name="phone" size={size} color={"darkblue"} />;
+              return <Feather name="home" size={size} color={primary} />;
             }
           },
         }}

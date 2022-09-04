@@ -27,7 +27,7 @@ const Index = () => {
     >
       <Text
         style={{
-          fontFamily: "roboto_bold",
+          fontFamily: "_bold",
           fontSize: 25,
           color: "white",
         }}

@@ -287,6 +287,8 @@ const Index = (props) => {
         scores: result,
         completedTests: ["initTest"],
       });
+    setLoading(false);
+    nav.dispatch(StackActions.popToTop());
   }
   function next() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -356,12 +358,7 @@ const Index = (props) => {
                 <Text
                   style={
                     questions[index].selectedAnswer === ind
-                      ? [
-                          styles.answerText,
-                          {
-                            fontFamily: "roboto_bold",
-                          },
-                        ]
+                      ? [styles.answerText, {}]
                       : [styles.answerText, {}]
                   }
                 >
