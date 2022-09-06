@@ -21,7 +21,7 @@ const Index = ({ steps, step, height }) => {
       style={{
         height,
         borderRadius: height,
-        backgroundColor: "rgba(255,198,0, 0.1)",
+        backgroundColor: "rgba(48,90,247, 0.1)",
         overflow: "hidden",
         margin: 10,
       }}
@@ -35,7 +35,7 @@ const Index = ({ steps, step, height }) => {
           height,
           width: "100%",
           borderRadius: height,
-          backgroundColor: "rgb(255,198,0)",
+          backgroundColor: "rgb(48,90,247)",
           position: "absolute",
           left: 0,
           top: 0,

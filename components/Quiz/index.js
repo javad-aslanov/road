@@ -14,7 +14,10 @@ import Icon from "react-native-vector-icons/AntDesign";
 import { StackActions, useNavigation } from "@react-navigation/native";
 import firebase from "firebase";
 import * as Haptics from "expo-haptics";
-import { FIREBASE_PATH_USERS } from "../../constants/firebase";
+import {
+  FIREBASE_PATH_TESTS,
+  FIREBASE_PATH_USERS,
+} from "../../constants/firebase";
 
 function determineLevel(x) {
   var level = "";
@@ -287,6 +290,11 @@ const Index = (props) => {
         scores: result,
         completedTests: ["initTest"],
       });
+    await firebase.firestore().collection(FIREBASE_PATH_TESTS).add({
+      userId: firebase.auth().currentUser.uid,
+      scores: result,
+      date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
     setLoading(false);
     nav.dispatch(StackActions.popToTop());
   }

@@ -1,18 +1,17 @@
 import { StyleSheet } from "react-native";
 import { AZURE_BLUE } from "../../constants/colors";
+import { primary } from "../colors";
 
 export default StyleSheet.create({
   progressText: {
-    fontWeight: "bold",
-
     alignSelf: "center",
     marginVertical: 10,
     fontSize: 15,
-    color: "white",
+    color: "black",
   },
   container: {
     flex: 1,
-    backgroundColor: "#0E1C41",
+    backgroundColor: "white",
   },
   progressBar: {
     alignSelf: "center",
@@ -25,7 +24,7 @@ export default StyleSheet.create({
     color: "white",
   },
   selectContainer: {
-    backgroundColor: "rgba(0, 82, 255, 0.1)",
+    backgroundColor: "#0E1C41",
     margin: 20,
     flex: 1,
     borderRadius: 15,
@@ -92,14 +91,14 @@ export default StyleSheet.create({
     color: "lightgrey",
   },
   disabled: {
-    backgroundColor: "rgba(255,198,0, 0.1)",
-    borderColor: "#FFC600",
+    backgroundColor: "rgba(48,90,247, 0.1)",
+    borderColor: primary,
   },
   enabledText: {
     color: "white",
   },
   enabled: {
-    backgroundColor: "#FFC600",
-    borderColor: "#FFC600",
+    backgroundColor: primary,
+    borderColor: primary,
   },
 });

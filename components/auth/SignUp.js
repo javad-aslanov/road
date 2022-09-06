@@ -10,14 +10,14 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
+import DatePicker from "react-native-datepicker";
+
 import styles from "./SignIn/styles";
 import firebase from "firebase";
 import { StackActions, useNavigation } from "@react-navigation/native";
 import Svg, { G, Path } from "react-native-svg";
 import { primary } from "../colors";
-
-const minAge = 13;
-const maxAge = 17;
+import { FIREBASE_PATH_USERS } from "../../constants/firebase";
 
 const SignUp = () => {
   function randomIntFromInterval(min, max) {
@@ -28,14 +28,23 @@ const SignUp = () => {
   const nav = useNavigation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [date, setDate] = useState(
+    new Date().getFullYear() -
+      17 +
+      "-" +
+      (new Date().getMonth() < 10
+        ? "0" + new Date().getMonth()
+        : new Date().getMonth()) +
+      "-" +
+      (new Date().getDay() < 10
+        ? "0" + new Date().getDay()
+        : new Date().getDay())
+  );
   const [code, setCode] = useState("");
-  const [age, setAge] = useState(0);
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const signUpUser = async () => {
     if (username.length <= 3) {
       Alert.alert("İstifadəçi adı ən azı 3 simvol uzunluğunda olmalıdır.");
-    } else if (age < 13 || age > 17) {
-      Alert.alert("Bu tətbiqin yaş tələblərinə uyğun deyilsiz");
     } else if (password !== passwordRepeat) {
       Alert.alert("Şifrə və şifrənin təkrarı eyni dəyərdə olmalıdır");
     } else if (password.length < 8) {
@@ -43,7 +52,6 @@ const SignUp = () => {
     } else if (!(code.length > 0)) {
       Alert.alert("Məktəb kodunu daxil edin");
     } else {
-      setLoading(true);
       await firebase
         .auth()
         .createUserWithEmailAndPassword(username + "@gmail.com", password);
@@ -55,8 +63,8 @@ const SignUp = () => {
         .set({
           uid: firebase.auth().currentUser.uid,
           username: username,
-          age: age,
-          code: code,
+          dateOfBirth: date,
+          teacherCode: code,
           completedTests: [],
           isTeacher: false,
         });
@@ -78,15 +86,46 @@ const SignUp = () => {
               <TextInput onChangeText={setUsername} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Məktəb kodu</Text>
+              <Text style={styles.textInputLabel}>Müəllim kodu</Text>
               <TextInput onChangeText={setCode} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Yaş</Text>
-              <TextInput
-                onChangeText={setAge}
-                keyboardType="number-pad"
-                style={styles.textInput}
+              <Text style={styles.textInputLabel}>Doğum tarixi</Text>
+
+              <DatePicker
+                style={{ width: 200, paddingVertical: 7 }}
+                date={date}
+                mode="date"
+                format="YYYY-MM-DD"
+                minDate={
+                  new Date().getFullYear() -
+                  17 +
+                  "-" +
+                  new Date().getMonth() +
+                  "-" +
+                  new Date().getDay()
+                }
+                maxDate={
+                  new Date().getFullYear() -
+                  13 +
+                  "-" +
+                  new Date().getMonth() +
+                  "-" +
+                  new Date().getDay()
+                }
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                useNativeDriver={true}
+                customStyles={{
+                  dateIcon: {
+                    opacity: 0,
+                  },
+                  dateInput: {
+                    ...styles.textInput,
+                  },
+                  // ... You can check the source to find the other keys.
+                }}
+                onDateChange={(date) => setDate(date)}
               />
             </View>
 

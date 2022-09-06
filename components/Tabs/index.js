@@ -1,3 +1,4 @@
+import Profile from "../Profile";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "expo-vector-icons";
 import React from "react";
@@ -24,6 +25,24 @@ const Index = () => {
               return <Feather name="home" size={size} color={"lightgrey"} />;
             } else {
               return <Feather name="home" size={size} color={primary} />;
+            }
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          headerStyle: {
+            backgroundColor: "#1A2144",
+          },
+          tabBarShowLabel: false,
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => {
+            if (color === "#8E8E8F") {
+              return <Feather name="user" size={size} color={"lightgrey"} />;
+            } else {
+              return <Feather name="user" size={size} color={primary} />;
             }
           },
         }}

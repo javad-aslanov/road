@@ -11,8 +11,10 @@ import firebase from "firebase";
 import { FIREBASE_PATH_USERS } from "../../constants/firebase";
 import styles from "./styles";
 import { Feather } from "expo-vector-icons";
+import { StackActions, useNavigation } from "@react-navigation/native";
 const Index = ({ user }) => {
   const [students, setStudents] = useState([]);
+  const nav = useNavigation();
   useEffect(() => {
     firebase
       .firestore()
@@ -64,7 +66,16 @@ const Index = ({ user }) => {
                   flexDirection: "column",
                 }}
               >
-                <TouchableOpacity style={styles.studentBtn}>
+                <TouchableOpacity
+                  style={styles.studentBtn}
+                  onPress={() => {
+                    nav.dispatch(
+                      StackActions.push("Results", {
+                        studentId: student.id,
+                      })
+                    );
+                  }}
+                >
                   <Text style={styles.studentBtnText}>
                     <Feather name="bar-chart" />
                     Proqressə baxmaq

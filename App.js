@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
+import Results from "./components/Results";
 import {
   NavigationContainer,
   StackActions,
@@ -18,8 +19,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Main from "./components/Main";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
-import { useFonts } from "expo-font";
 import Quiz from "./components/Quiz";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
 const firebaseConfig = {
   apiKey: "AIzaSyByYPKLWwts8c3ZGi_PWcca0ScIDzBYkVM",
   authDomain: "road-f380a.firebaseapp.com",
@@ -71,6 +73,14 @@ export default function App() {
                 headerShown: false,
               }}
               name="Quiz"
+            />
+            <Stack.Screen
+              component={Results}
+              options={{
+                headerTitle: "Proqress",
+                headerBackTitle: "",
+              }}
+              name="Results"
             />
           </Stack.Navigator>
         </>
