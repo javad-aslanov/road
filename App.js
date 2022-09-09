@@ -1,4 +1,10 @@
 import { StatusBar } from "expo-status-bar";
+import CustomLoading from "./components/CustomLoading/index";
+import Settings from "./components/Settings";
+import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { OverlayProvider } from "stream-chat-expo";
+import { AppRegistry } from "react-native";
 import React, { useState, useEffect } from "react";
 import {
   ActivityIndicator,
@@ -21,6 +27,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import Quiz from "./components/Quiz";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { primary } from "./components/colors";
 
 const firebaseConfig = {
   apiKey: "AIzaSyByYPKLWwts8c3ZGi_PWcca0ScIDzBYkVM",
@@ -40,10 +47,16 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [user, setUser] = useState();
-  let loaded = true;
+  const [loaded, setLoaded] = useState(false);
 
   function onAuthStateChanged(user) {
-    setUser(user);
+    if (user) {
+      setLoaded(true);
+      setUser(user);
+    } else {
+      setUser(null);
+      setLoaded(true);
+    }
   }
 
   // const { bottom } = useSafeAreaInsets();
@@ -52,7 +65,7 @@ export default function App() {
     return promise;
   }, []);
   if (!loaded) {
-    return <ActivityIndicator animating color="black" />;
+    return <CustomLoading />;
   }
 
   return (
@@ -82,6 +95,13 @@ export default function App() {
               }}
               name="Results"
             />
+            <Stack.Screen
+              name="Settings"
+              options={{
+                headerBackTitle: "",
+              }}
+              component={Settings}
+            />
           </Stack.Navigator>
         </>
       ) : (
@@ -108,11 +128,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

@@ -11,7 +11,11 @@ import {
 import styles from "./styles";
 import firebase from "firebase";
 import { FIREBASE_PATH_USERS } from "../../constants/firebase";
+import { Feather } from "expo-vector-icons";
+import { primary, secondary } from "../colors";
+import { StackActions, useNavigation } from "@react-navigation/native";
 const Index = () => {
+  const nav = useNavigation();
   const [user, setUser] = useState();
   useEffect(() => {
     const unsub = firebase
@@ -23,9 +27,24 @@ const Index = () => {
       });
     return unsub;
   }, []);
+
+  function navToSettings() {
+    nav.dispatch(StackActions.push("Settings"));
+  }
+
   if (user) {
     return (
       <SafeAreaView style={styles.container}>
+        <TouchableOpacity
+          style={{
+            position: "absolute",
+            right: 30,
+            top: 30,
+          }}
+          onPress={navToSettings}
+        >
+          <Feather name="settings" size={28} color={"darkgrey"} />
+        </TouchableOpacity>
         <Image
           source={{
             uri:
