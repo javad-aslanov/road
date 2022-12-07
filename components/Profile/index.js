@@ -14,6 +14,9 @@ import { FIREBASE_PATH_USERS } from "../../constants/firebase";
 import { Feather } from "expo-vector-icons";
 import { primary, secondary } from "../colors";
 import { StackActions, useNavigation } from "@react-navigation/native";
+import { StreamChat } from "stream-chat";
+const client = StreamChat.getInstance("48v2teztftmy");
+
 const Index = () => {
   const nav = useNavigation();
   const [user, setUser] = useState();
@@ -61,35 +64,42 @@ const Index = () => {
         />
 
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>İstifadəçi adı</Text>
+          <Text style={styles.inputLabel}>Имя пользователя</Text>
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>{user.username}</Text>
           </View>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Rol</Text>
+          <Text style={styles.inputLabel}>Роль</Text>
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>
-              {user.isTeacher ? "Müəllim 👨‍🏫" : "Tələbə 🧑‍🎓"}
+              {user.isTeacher
+                ? "Учитель 👨‍🏫"
+                : user.isPsych
+                ? "Психолог 🧑‍⚕️"
+                : "Студент 🧑‍🎓"}
             </Text>
           </View>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Doğum tarixi</Text>
+          <Text style={styles.inputLabel}>Дата рождения</Text>
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>{user.dateOfBirth}</Text>
           </View>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Parol</Text>
+          <Text style={styles.inputLabel}>Пароль</Text>
           <TextInput style={styles.notDisabled} />
         </View>
 
         <TouchableOpacity
-          onPress={() => firebase.auth().signOut()}
+          onPress={async () => {
+            await client.disconnectUser();
+            await firebase.auth().signOut();
+          }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Çıxış</Text>
+          <Text style={styles.signOutText}>Выход</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );

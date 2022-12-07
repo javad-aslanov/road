@@ -77,181 +77,156 @@ const prosocial = "prosocial";
 const initialQuestions = [
   {
     question:
-      "Başqalarına yaxşı davranmağa çalışıram. Onların hissləri ilə maraqlanıram",
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
+      "Я стараюсь быть хорошим/ей c другими людьми. Я внимателен/на к их чувствам",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Mən narahatam, uzun müddət sakit qala bilmirəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я неугомонный/ая, не могу долго оставаться спокойным/ой",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Tez-tez baş ağrılar və ya ürək bulamalarım olur",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "У меня часто бывают головные боли, боли в животе и тошнота",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question:
-      "Mən adətən başqaları ilə paylaşıram (yemək, oyunlar, qələmlər və s.)",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я обычно делюсь с другими (едой, играми, ручками и др.)",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Çox əsəbiləşirəm və özümü itirirəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я сильно сержусь, раздражаюсь и выхожу из себя",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Mən adətən tək oluram. Çox vaxt tək oynayıram və dərs oxuyuram",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question:
+      "Я обычно один/одна. Чаще всего я играю в одиночестве и занимаюсь сам/а",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
+    answers: ["Верно", "Отчасти верно", "Неверно"],
     answerWeight: [0, 1, 2],
-    question: "Mən adətən mənə deyilənləri edirəm",
+    question: "Я обычно делаю то, что мне говорят",
     category: behaviour,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Mən çox vaxtı narahat oluram",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я много беспокоюсь",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question:
-      "Kiminsə əsəbləşdiyi, incidiyi və ya xəstə olduğu halda kömək etməyə çalışıram",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я пытаюсь помочь, если кто-нибудь расстроен, обижен или болен",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Davamlı olaraq başım gicəllənir",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я постоянно ерзаю и верчусь",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Ən azı bir yaxşı dostum var",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "У меня есть по крайней мере один хороший друг",
     answerWeight: [0, 1, 2],
     category: communication,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "İstədiyimi başqalarına etdirə bilərəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question:
+      "Я много дерусь. Я могу заставить других людей делать то, что я хочу",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Tez-tez özümü bədbəxt, kədərli, ağlamağa hazır hiss edirəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question:
+      "Я часто чувствую себя несчастным/ой, унылым/ой, готов/а расплакаться",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Mən adətən həmyaşıdlarımı bəyənirəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я обычно нравлюсь своим сверстникам",
     answerWeight: [0, 1, 2],
     category: communication,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question:
-      "Diqqətim asanlıqla dağılır və diqqətimi cəmləməkdə çətinlik çəkirəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я легко отвлекаюсь, мне трудно сосредоточиться",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Yeni mühitlərdə əsəbi oluram, inamımı asanlıqla itirirəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я нервничаю в новой обстановке, легко теряю уверенность",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Kiçik uşaqlara qarşı mehribanam",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я добр/а к младшим детям",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Mən tez-tez yalan danışıram və aldadıram",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Меня часто обвиняют во лжи или обмане",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Başqalar tez-tez mənə sataşırlar və ya təhqir edirlər",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Другие часто дразнят или задирают меня",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question:
-      "Mən tez-tez başqalarına kömək edirəm (valideynlərə, müəllimlərə, uşaqlara)",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я часто вызываюсь помочь другим (родителям, учителям, детям)",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Hərəkət etməzdən əvvəl düşünürəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я думаю прежде чем действовать",
     answerWeight: [0, 1, 2],
     category: hyperactive,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question:
-      "Evdən, məktəbdən və başqa yerlərdən başqalarının əşyalarını götürürəm",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я беру чужие вещи из дома, школы и других мест",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Yaşıdlarla müqayisədə böyüklərlə münasibətim daha yaxşıdır",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "У меня лучше отношения со взрослыми, чем со сверстниками",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Çox şeydən qorxuram",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question: "Я многого боюсь, легко пугаюсь",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Düzdür", "Qismən doğru", "Doğru deyil"],
-
-    question: "Başladığım işi başa çatdırıram. Diqqətim yaxşıdır.",
+    answers: ["Верно", "Отчасти верно", "Неверно"],
+    question:
+      "Я делаю до конца работу, которую начал/а. У меня хорошее внимание.",
     answerWeight: [0, 1, 2],
     category: hyperactive,
   },
@@ -333,7 +308,7 @@ const Index = (props) => {
 
       <View style={styles.selectContainer}>
         <View style={styles.infoContainer}>
-          <Text style={styles.selectText}>Cavab seçin✨</Text>
+          <Text style={styles.selectText}>Выберите ответ✨</Text>
           <Text style={styles.questionText}>{questions[index].question}</Text>
           <View style={styles.answers}>
             {questions[index].answers.map((answer, ind) => (
@@ -395,7 +370,7 @@ const Index = (props) => {
                   : [styles.backText, styles.disabledText]
               }
             >
-              Arxaya
+              Назад
             </Text>
           </TouchableOpacity>
           {loading ? (
@@ -433,7 +408,7 @@ const Index = (props) => {
                     : [styles.nextText, styles.disabledText]
                 }
               >
-                {index === questions.length - 1 ? "Bitir" : "Növbəti"}
+                {index === questions.length - 1 ? "Закончить" : "Следующий"}
               </Text>
             </TouchableOpacity>
           )}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Admin from "./Admin";
+import PsychChats from "./PsychChats";
 import {
   View,
   StyleSheet,
@@ -25,6 +26,11 @@ import { StackActions, useNavigation } from "@react-navigation/native";
 import { primary, secondary } from "./colors";
 import { BarChart, LineChart } from "react-native-chart-kit";
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { PSYCH_ID } from "../constants/others";
+import { StreamChat } from "stream-chat";
+
+const client = StreamChat.getInstance("48v2teztftmy");
 const Main = () => {
   const [user, setUser] = useState();
   const [tests, setTests] = useState();
@@ -40,9 +46,26 @@ const Main = () => {
   }, []);
   const nav = useNavigation();
 
+  if (user) {
+    async function func() {
+      await client.connectUser(
+        {
+          id: firebase.auth().currentUser.uid,
+          name: user.username,
+        },
+        client.devToken(firebase.auth().currentUser.uid)
+      );
+    }
+    func();
+  }
+
+  if (user && user.isPsych) {
+    return <PsychChats />;
+  }
+
   if (user && !user.isTeacher) {
     return (
-      <ScrollView style={{ backgroundColor: "white", flex: 1 }}>
+      <ScrollView style={{ backgroundColor: "white", flex: 1, paddingTop: 30 }}>
         <View
           style={{
             flex: 1,
@@ -57,7 +80,7 @@ const Main = () => {
               paddingVertical: 30,
             }}
           >
-            Salam, {user.username}👋
+            Привет, {user.username}👋
           </Text>
 
           <View
@@ -71,7 +94,7 @@ const Main = () => {
                 fontSize: 20,
               }}
             >
-              Testlər
+              Анкеты
             </Text>
             <FlatList
               data={[0]}
@@ -98,14 +121,14 @@ const Main = () => {
                         alignSelf: "center",
                       }}
                     >
-                      Xarakter Testi
+                      Диагностика
                     </WhiteText>
                     <WhiteText
                       style={{
                         alignSelf: "center",
                       }}
                     >
-                      ∼5 dəq⏰
+                      ∼5 мин⏰
                     </WhiteText>
                     {/* <WhiteText>
                     {isCompleted ? "Tamamlandı" : "Tamamlanmadı"}
@@ -124,7 +147,7 @@ const Main = () => {
                       }}
                     >
                       <Text style={{ fontWeight: "bold", color: primary }}>
-                        {isCompleted ? "Yenidən Keç" : "Başla"}
+                        {isCompleted ? "Пройти еще раз" : "Начать"}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -144,7 +167,7 @@ const Main = () => {
                 fontSize: 20,
               }}
             >
-              Yardıma ehtiyacınız var?
+              Нужна помощь?
             </Text>
             <>
               <View
@@ -163,16 +186,23 @@ const Main = () => {
                     alignSelf: "center",
                   }}
                 >
-                  Psixoloqla söhbət💬
+                  Беседа с психологом💬
                 </WhiteText>
 
-                {/* <WhiteText>
-                    {isCompleted ? "Tamamlandı" : "Tamamlanmadı"}
-                  </WhiteText> */}
                 <TouchableOpacity
-                  onPress={() => {}}
+                  onPress={async () => {
+                    const channel = client.channel("messaging", {
+                      members: [firebase.auth().currentUser.uid, PSYCH_ID],
+                    });
+                    await channel.create();
+                    nav.dispatch(
+                      StackActions.push("Chat", {
+                        channel_id: channel.id,
+                      })
+                    );
+                  }}
                   style={{
-                    borderRadius: 10,
+                    borderRadius: 10000,
                     borderColor: secondary,
                     borderWidth: 1.5,
                     padding: 5,
@@ -181,7 +211,7 @@ const Main = () => {
                   }}
                 >
                   <Text style={{ fontWeight: "bold", color: primary }}>
-                    Başla
+                    Начать
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -201,7 +231,7 @@ const Main = () => {
                     alignSelf: "center",
                   }}
                 >
-                  Qaynar xətt☎️
+                  Горячая линия☎️
                 </WhiteText>
 
                 {/* <WhiteText>
@@ -224,7 +254,7 @@ const Main = () => {
                   }}
                 >
                   <Text style={{ fontWeight: "bold", color: primary }}>
-                    Zəng et
+                    Позвонить
                   </Text>
                 </TouchableOpacity>
               </View>

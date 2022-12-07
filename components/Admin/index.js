@@ -40,7 +40,7 @@ const Index = ({ user }) => {
           paddingVertical: 30,
         }}
       >
-        Salam, {user.username}👋
+        Привет, {user.username}👋
       </Text>
 
       <View
@@ -54,7 +54,7 @@ const Index = ({ user }) => {
             fontSize: 15,
           }}
         >
-          Şagirdlər
+          Ученики
         </Text>
         <View>
           {students.map((student) => (
@@ -78,7 +78,7 @@ const Index = ({ user }) => {
                 >
                   <Text style={styles.studentBtnText}>
                     <Feather name="bar-chart" />
-                    Proqressə baxmaq
+                    Посмотреть прогресс
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -96,7 +96,7 @@ const Index = ({ user }) => {
           >
             <Feather name="share-2" color="#fff" size={18} />
             <Text style={styles.shareBtnText}>
-              Tələbələrinizə dəvət göndərin
+              Отправить приглашение ученикам
             </Text>
           </TouchableOpacity>
         </View>

@@ -21,9 +21,9 @@ const Index = () => {
   if (!loading) {
     return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title2}>Parolu Dəyiş</Text>
+        <Text style={styles.title2}>Изменить пароль</Text>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Yeni Şifrə</Text>
+          <Text style={styles.inputLabel}>Новый пароль</Text>
           <TextInput
             secureTextEntry
             onChangeText={(t) => setNewPassword(t)}
@@ -31,7 +31,7 @@ const Index = () => {
           ></TextInput>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Yeni Şifrəni Təkrarlayın</Text>
+          <Text style={styles.inputLabel}>Повторите новый пароль</Text>
           <TextInput
             secureTextEntry
             onChangeText={(t) => setNewPasswordRepeat(t)}
@@ -41,17 +41,17 @@ const Index = () => {
 
         <TouchableOpacity
           onPress={() => {
-            Alert.alert("Parolunuzu dəyişmək istədiyinizə əminsiniz?", "", [
+            Alert.alert("Вы уверены, что хотите изменить свой пароль?", "", [
               {
-                text: "Bəli",
+                text: "Да",
                 style: "destructive",
                 onPress: async () => {
                   if (newPassword !== newPasswordRepeat) {
                     Alert.alert(
-                      "Şifrə və şifrənin təkrarı eyni dəyərdə olmalıdır"
+                      "Пароль и повторение пароля должны иметь одинаковое значение"
                     );
                   } else if (newPassword.length < 8) {
-                    Alert.alert("Şifrə ən azı 8 simvol uzunluğunda olmalıdır");
+                    Alert.alert("Пароль должен быть не менее 8 символов");
                   } else {
                     setLoading(true);
                     await firebase
@@ -66,22 +66,22 @@ const Index = () => {
                 },
               },
               {
-                text: "Yox",
+                text: "Нет",
                 style: "cancel",
               },
             ]);
           }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Parolu Dəyiş</Text>
+          <Text style={styles.signOutText}>Изменить пароль</Text>
         </TouchableOpacity>
 
-        <Text style={styles.title2}>Hesabı Sil</Text>
+        <Text style={styles.title2}>Удалить аккаунт</Text>
         <TouchableOpacity
           onPress={() => {
-            Alert.alert("Hesabınızı silmək istədiyinizə əminsiniz?", "", [
+            Alert.alert("Вы уверены, что хотите удалить свой аккаунт?", "", [
               {
-                text: "Bəli",
+                text: "Да",
                 style: "destructive",
                 onPress: async () => {
                   setLoading(true);
@@ -95,14 +95,14 @@ const Index = () => {
                 },
               },
               {
-                text: "Yox",
+                text: "Нет",
                 style: "cancel",
               },
             ]);
           }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Hesabı Sil</Text>
+          <Text style={styles.signOutText}>Удалить аккаунт</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );

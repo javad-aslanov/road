@@ -10,7 +10,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
-import DatePicker from "react-native-datepicker";
+import DatePicker from "react-native-modern-datepicker";
 
 import styles from "./SignIn/styles";
 import firebase from "firebase";
@@ -28,18 +28,7 @@ const SignUp = () => {
   const nav = useNavigation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [date, setDate] = useState(
-    new Date().getFullYear() -
-      17 +
-      "-" +
-      (new Date().getMonth() < 10
-        ? "0" + new Date().getMonth()
-        : new Date().getMonth()) +
-      "-" +
-      (new Date().getDay() < 10
-        ? "0" + new Date().getDay()
-        : new Date().getDay())
-  );
+  const [date, setDate] = useState("");
   const [code, setCode] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const signUpUser = async () => {
@@ -67,6 +56,7 @@ const SignUp = () => {
           teacherCode: code,
           completedTests: [],
           isTeacher: false,
+          isPsych: false,
         });
     }
   };
@@ -76,61 +66,30 @@ const SignUp = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={{}}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Qeydiyyat</Text>
+          <Text style={styles.title}>Регистрация</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>İstifadəçi adı</Text>
+              <Text style={styles.textInputLabel}>Имя пользователя</Text>
               <TextInput onChangeText={setUsername} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Müəllim kodu</Text>
+              <Text style={styles.textInputLabel}>Код учителя</Text>
               <TextInput onChangeText={setCode} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Doğum tarixi</Text>
+              <Text style={styles.textInputLabel}>Дата рождения</Text>
 
               <DatePicker
-                style={{ width: 200, paddingVertical: 7 }}
-                date={date}
-                mode="date"
-                format="YYYY-MM-DD"
-                minDate={
-                  new Date().getFullYear() -
-                  17 +
-                  "-" +
-                  new Date().getMonth() +
-                  "-" +
-                  new Date().getDay()
-                }
-                maxDate={
-                  new Date().getFullYear() -
-                  13 +
-                  "-" +
-                  new Date().getMonth() +
-                  "-" +
-                  new Date().getDay()
-                }
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                useNativeDriver={true}
-                customStyles={{
-                  dateIcon: {
-                    opacity: 0,
-                  },
-                  dateInput: {
-                    ...styles.textInput,
-                  },
-                  // ... You can check the source to find the other keys.
-                }}
-                onDateChange={(date) => setDate(date)}
+                mode="monthYear"
+                onSelectedChange={(date) => setDate(date)}
               />
             </View>
 
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Şifrə</Text>
+              <Text style={styles.textInputLabel}>Пароль</Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -138,7 +97,7 @@ const SignUp = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Şifrə</Text>
+              <Text style={styles.textInputLabel}>Пароль</Text>
               <TextInput
                 onChangeText={setPasswordRepeat}
                 secureTextEntry
@@ -147,7 +106,7 @@ const SignUp = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signUpUser}>
-              <Text style={styles.btnText}>Təsdiq et</Text>
+              <Text style={styles.btnText}>Подтвердить </Text>
             </TouchableOpacity>
           </View>
 
@@ -158,7 +117,7 @@ const SignUp = () => {
                 alignSelf: "center",
               }}
             >
-              Hesabınız var? <Text style={{ color: primary }}>Giriş edin</Text>
+              Есть аккаунт? <Text style={{ color: primary }}>Войти</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>

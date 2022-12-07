@@ -33,11 +33,11 @@ const SignIn = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Giriş</Text>
+          <Text style={styles.title}>Войти</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>İstifadəçi adı</Text>
+              <Text style={styles.textInputLabel}>Имя пользователя</Text>
               <TextInput
                 onChangeText={setUsername}
                 placeholderTextColor="white"
@@ -47,7 +47,7 @@ const SignIn = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Şifrə</Text>
+              <Text style={styles.textInputLabel}>Пароль</Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -59,7 +59,7 @@ const SignIn = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signInUser}>
-              <Text style={styles.btnText}>Giriş Et</Text>
+              <Text style={styles.btnText}>Войти</Text>
             </TouchableOpacity>
           </View>
 
@@ -70,8 +70,8 @@ const SignIn = () => {
                 alignSelf: "center",
               }}
             >
-              Hesabınız yoxdur?{" "}
-              <Text style={{ color: primary }}>Qeydiyyatdan keçin</Text>
+              Нет аккаунта?{" "}
+              <Text style={{ color: primary }}>Зарегистрироваться</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>
