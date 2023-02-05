@@ -33,13 +33,13 @@ const SignUp = () => {
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const signUpUser = async () => {
     if (username.length <= 3) {
-      Alert.alert("İstifadəçi adı ən azı 3 simvol uzunluğunda olmalıdır.");
+      Alert.alert("Username must be at least 3 characters.");
     } else if (password !== passwordRepeat) {
-      Alert.alert("Şifrə və şifrənin təkrarı eyni dəyərdə olmalıdır");
+      Alert.alert("Password and password repeat must be equal");
     } else if (password.length < 8) {
-      Alert.alert("Şifrə ən azı 8 simvol uzunluğunda olmalıdır");
+      Alert.alert("Password must be at least 8 characters long");
     } else if (!(code.length > 0)) {
-      Alert.alert("Məktəb kodunu daxil edin");
+      Alert.alert("Enter the teacher code");
     } else {
       await firebase
         .auth()
@@ -68,19 +68,19 @@ const SignUp = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{}}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Регистрация</Text>
+          <Text style={styles.title}>Sign Up</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Имя пользователя</Text>
+              <Text style={styles.textInputLabel}>Username</Text>
               <TextInput onChangeText={setUsername} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Код учителя</Text>
+              <Text style={styles.textInputLabel}>Teacher Code</Text>
               <TextInput onChangeText={setCode} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Дата рождения</Text>
+              <Text style={styles.textInputLabel}>Birthday</Text>
 
               <DatePicker
                 mode="monthYear"
@@ -89,7 +89,7 @@ const SignUp = () => {
             </View>
 
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Пароль</Text>
+              <Text style={styles.textInputLabel}>Password</Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -97,7 +97,7 @@ const SignUp = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Пароль</Text>
+              <Text style={styles.textInputLabel}>Password Repeat</Text>
               <TextInput
                 onChangeText={setPasswordRepeat}
                 secureTextEntry
@@ -106,7 +106,7 @@ const SignUp = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signUpUser}>
-              <Text style={styles.btnText}>Подтвердить </Text>
+              <Text style={styles.btnText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
 
@@ -117,7 +117,7 @@ const SignUp = () => {
                 alignSelf: "center",
               }}
             >
-              Есть аккаунт? <Text style={{ color: primary }}>Войти</Text>
+              Have an account? <Text style={{ color: primary }}>Sign In</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>

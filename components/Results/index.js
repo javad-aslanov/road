@@ -14,8 +14,9 @@ import styles from "./styles";
 import { FIREBASE_PATH_TESTS } from "../../constants/firebase";
 const Index = (props) => {
   function translate(level) {
-    if (level === "barely normal") return "sərhəd";
-    else return level;
+    // if (level === "barely normal") return "sərhəd";
+    // else return level;
+    return level;
   }
 
   const [data, setData] = useState([]);
@@ -33,7 +34,7 @@ const Index = (props) => {
 
   if (data) {
     const state = {
-      tableHead: [" Kateqoriya ", "Bal", "Səviyyə", "Tarix"],
+      tableHead: [" Category ", "Score", "Level", "Date"],
       tableData: [],
     };
     for (let i = 0; i < data.length; i++) {
@@ -41,25 +42,10 @@ const Index = (props) => {
       const date = new Date(x.date.seconds * 1000).toDateString();
       state.tableData = [
         ...state.tableData,
-        [
-          "Ünsiyyətcillik",
-          x.scores[0].weight,
-          translate(x.scores[0].level),
-          date,
-        ],
-        [
-          "Hiperaktivlik",
-          x.scores[1].weight,
-          translate(x.scores[1].level),
-          date,
-        ],
-        [
-          "Emosionallıq",
-          x.scores[2].weight,
-          translate(x.scores[2].level),
-          date,
-        ],
-        ["Davranış", x.scores[3].weight, translate(x.scores[3].level), date],
+        ["Prosocial", x.scores[0].weight, translate(x.scores[0].level), date],
+        ["Hyperactive", x.scores[1].weight, translate(x.scores[1].level), date],
+        ["Emotional", x.scores[2].weight, translate(x.scores[2].level), date],
+        ["Behavioral", x.scores[3].weight, translate(x.scores[3].level), date],
       ];
     }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PsychScreen from "./PsychScreen";
 import Admin from "./Admin";
 import PsychChats from "./PsychChats";
 import {
@@ -33,7 +34,6 @@ import { StreamChat } from "stream-chat";
 const client = StreamChat.getInstance("48v2teztftmy");
 const Main = () => {
   const [user, setUser] = useState();
-  const [tests, setTests] = useState();
   useEffect(() => {
     const unsub = firebase
       .firestore()
@@ -60,7 +60,7 @@ const Main = () => {
   }
 
   if (user && user.isPsych) {
-    return <PsychChats />;
+    return <PsychScreen />;
   }
 
   if (user && !user.isTeacher) {
@@ -80,7 +80,7 @@ const Main = () => {
               paddingVertical: 30,
             }}
           >
-            Привет, {user.username}👋
+            Hi, {user.username}👋
           </Text>
 
           <View
@@ -94,7 +94,7 @@ const Main = () => {
                 fontSize: 20,
               }}
             >
-              Анкеты
+              Tests
             </Text>
             <FlatList
               data={[0]}
@@ -121,14 +121,14 @@ const Main = () => {
                         alignSelf: "center",
                       }}
                     >
-                      Диагностика
+                      Diagnostic
                     </WhiteText>
                     <WhiteText
                       style={{
                         alignSelf: "center",
                       }}
                     >
-                      ∼5 мин⏰
+                      ∼5 mins⏰
                     </WhiteText>
                     {/* <WhiteText>
                     {isCompleted ? "Tamamlandı" : "Tamamlanmadı"}
@@ -147,7 +147,7 @@ const Main = () => {
                       }}
                     >
                       <Text style={{ fontWeight: "bold", color: primary }}>
-                        {isCompleted ? "Пройти еще раз" : "Начать"}
+                        {isCompleted ? "Retry" : "Start"}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -167,7 +167,7 @@ const Main = () => {
                 fontSize: 20,
               }}
             >
-              Нужна помощь?
+              Need help?
             </Text>
             <>
               <View
@@ -186,7 +186,7 @@ const Main = () => {
                     alignSelf: "center",
                   }}
                 >
-                  Беседа с психологом💬
+                  Talk to a professional💬
                 </WhiteText>
 
                 <TouchableOpacity
@@ -211,7 +211,7 @@ const Main = () => {
                   }}
                 >
                   <Text style={{ fontWeight: "bold", color: primary }}>
-                    Начать
+                    Start
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -231,7 +231,7 @@ const Main = () => {
                     alignSelf: "center",
                   }}
                 >
-                  Горячая линия☎️
+                  Hot Line☎️
                 </WhiteText>
 
                 {/* <WhiteText>
@@ -254,7 +254,7 @@ const Main = () => {
                   }}
                 >
                   <Text style={{ fontWeight: "bold", color: primary }}>
-                    Позвонить
+                    Call
                   </Text>
                 </TouchableOpacity>
               </View>

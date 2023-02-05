@@ -60,43 +60,6 @@ export default function App() {
     }
   }
 
-  firebase
-    .firestore()
-    .collection("users")
-    .get()
-    .then((snap) => {
-      const data = snap.docs.map((x) => x.data());
-      for (let i = 0; i < data.length; i++) {
-        const element = data[i];
-        const score = element.scores[0].level;
-        const num = element.scores[0].weight;
-        const score1 = element.scores[1].level;
-        const num1 = element.scores[1].weight;
-        const score2 = element.scores[2].level;
-        const num2 = element.scores[2].weight;
-        const score3 = element.scores[3].level;
-        const num3 = element.scores[3].weight;
-        const score4 = element.scores[4].level;
-        const num4 = element.scores[4].weight;
-        console.log(
-          i + 1 + ".",
-          "Prosocial:",
-          score + " (score is " + num + ")",
-          "Hyperactive:",
-          score1 + " (score is " + num1 + ")",
-          "Emotional:",
-          score2 + " (score is " + num2 + ")",
-          "Behavior:",
-          score3 + " (score is " + num3 + ")",
-          "Communication:",
-          score4 + " (score is " + num4 + ")"
-        );
-        console.log();
-      }
-      console.log("end");
-    });
-
-  // const { bottom } = useSafeAreaInsets();
   useEffect(() => {
     const promise = firebase.auth().onAuthStateChanged(onAuthStateChanged);
     return promise;
@@ -104,9 +67,44 @@ export default function App() {
   if (!loaded) {
     return <CustomLoading />;
   }
-
+  // firebase
+  //   .firestore()
+  //   .collection("users")
+  //   .get()
+  //   .then((snap) => {
+  //     const data = snap.docs.map((x) => x.data());
+  //     for (let i = 0; i < data.length; i++) {
+  //       const element = data[i];
+  //       const score = element.scores[0].level;
+  //       const num = element.scores[0].weight;
+  //       const score1 = element.scores[1].level;
+  //       const num1 = element.scores[1].weight;
+  //       const score2 = element.scores[2].level;
+  //       const num2 = element.scores[2].weight;
+  //       const score3 = element.scores[3].level;
+  //       const num3 = element.scores[3].weight;
+  //       const score4 = element.scores[4].level;
+  //       const num4 = element.scores[4].weight;
+  //       console.log(
+  //         element.username + ": ",
+  //         "Prosocial:",
+  //         score + " (score is " + num + ")",
+  //         "Hyperactive:",
+  //         score1 + " (score is " + num1 + ")",
+  //         "Emotional:",
+  //         score2 + " (score is " + num2 + ")",
+  //         "Behavior:",
+  //         score3 + " (score is " + num3 + ")",
+  //         "Communication:",
+  //         score4 + " (score is " + num4 + ")"
+  //       );
+  //       console.log();
+  //     }
+  //     console.log("end");
+  //   });
   return (
     <OverlayProvider>
+      <StatusBar style="dark" />
       <NavigationContainer>
         {user ? (
           <>
@@ -135,7 +133,7 @@ export default function App() {
               <Stack.Screen
                 component={Results}
                 options={{
-                  headerTitle: "Proqress",
+                  headerTitle: "Progress",
                   headerBackTitle: "",
                 }}
                 name="Results"

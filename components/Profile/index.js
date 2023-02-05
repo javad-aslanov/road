@@ -64,31 +64,31 @@ const Index = () => {
         />
 
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Имя пользователя</Text>
+          <Text style={styles.inputLabel}>Username</Text>
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>{user.username}</Text>
           </View>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Роль</Text>
+          <Text style={styles.inputLabel}>Role</Text>
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>
               {user.isTeacher
-                ? "Учитель 👨‍🏫"
+                ? "Teacher 👨‍🏫"
                 : user.isPsych
-                ? "Психолог 🧑‍⚕️"
-                : "Студент 🧑‍🎓"}
+                ? "Psychologist 🧑‍⚕️"
+                : "Student 🧑‍🎓"}
             </Text>
           </View>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Дата рождения</Text>
+          <Text style={styles.inputLabel}>Birthday</Text>
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>{user.dateOfBirth}</Text>
           </View>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Пароль</Text>
+          <Text style={styles.inputLabel}>Password</Text>
           <TextInput style={styles.notDisabled} />
         </View>
 
@@ -99,7 +99,7 @@ const Index = () => {
           }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Выход</Text>
+          <Text style={styles.signOutText}>Sign Out</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );

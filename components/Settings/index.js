@@ -21,9 +21,9 @@ const Index = () => {
   if (!loading) {
     return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title2}>Изменить пароль</Text>
+        <Text style={styles.title2}>Change Password</Text>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Новый пароль</Text>
+          <Text style={styles.inputLabel}>New Password</Text>
           <TextInput
             secureTextEntry
             onChangeText={(t) => setNewPassword(t)}
@@ -31,7 +31,7 @@ const Index = () => {
           ></TextInput>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Повторите новый пароль</Text>
+          <Text style={styles.inputLabel}>Repeat New Password</Text>
           <TextInput
             secureTextEntry
             onChangeText={(t) => setNewPasswordRepeat(t)}
@@ -41,17 +41,17 @@ const Index = () => {
 
         <TouchableOpacity
           onPress={() => {
-            Alert.alert("Вы уверены, что хотите изменить свой пароль?", "", [
+            Alert.alert("Are you sure, that you want to change your password?", "", [
               {
-                text: "Да",
+                text: "Yes",
                 style: "destructive",
                 onPress: async () => {
                   if (newPassword !== newPasswordRepeat) {
                     Alert.alert(
-                      "Пароль и повторение пароля должны иметь одинаковое значение"
+                      "Password and repeat password must have the same value"
                     );
                   } else if (newPassword.length < 8) {
-                    Alert.alert("Пароль должен быть не менее 8 символов");
+                    Alert.alert("Password must be at least 8 characters");
                   } else {
                     setLoading(true);
                     await firebase
@@ -66,22 +66,22 @@ const Index = () => {
                 },
               },
               {
-                text: "Нет",
+                text: "No",
                 style: "cancel",
               },
             ]);
           }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Изменить пароль</Text>
+          <Text style={styles.signOutText}>Change password</Text>
         </TouchableOpacity>
 
-        <Text style={styles.title2}>Удалить аккаунт</Text>
+        <Text style={styles.title2}>Delete account</Text>
         <TouchableOpacity
           onPress={() => {
-            Alert.alert("Вы уверены, что хотите удалить свой аккаунт?", "", [
+            Alert.alert("Are you sure, that you want to delete your account?", "", [
               {
-                text: "Да",
+                text: "Yes",
                 style: "destructive",
                 onPress: async () => {
                   setLoading(true);
@@ -95,14 +95,14 @@ const Index = () => {
                 },
               },
               {
-                text: "Нет",
+                text: "No",
                 style: "cancel",
               },
             ]);
           }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Удалить аккаунт</Text>
+          <Text style={styles.signOutText}>Delete account</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );

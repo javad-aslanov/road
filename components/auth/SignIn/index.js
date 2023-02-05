@@ -33,11 +33,11 @@ const SignIn = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Войти</Text>
+          <Text style={styles.title}>Sign In</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Имя пользователя</Text>
+              <Text style={styles.textInputLabel}>Username</Text>
               <TextInput
                 onChangeText={setUsername}
                 placeholderTextColor="white"
@@ -47,7 +47,7 @@ const SignIn = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Пароль</Text>
+              <Text style={styles.textInputLabel}>Password</Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -59,7 +59,7 @@ const SignIn = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signInUser}>
-              <Text style={styles.btnText}>Войти</Text>
+              <Text style={styles.btnText}>Sign In</Text>
             </TouchableOpacity>
           </View>
 
@@ -70,8 +70,8 @@ const SignIn = () => {
                 alignSelf: "center",
               }}
             >
-              Нет аккаунта?{" "}
-              <Text style={{ color: primary }}>Зарегистрироваться</Text>
+              Don't have an account?{" "}
+              <Text style={{ color: primary }}>Sign Up</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>

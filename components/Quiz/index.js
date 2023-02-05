@@ -77,156 +77,156 @@ const prosocial = "prosocial";
 const initialQuestions = [
   {
     question:
-      "Я стараюсь быть хорошим/ей c другими людьми. Я внимателен/на к их чувствам",
-    answers: ["Верно", "Отчасти верно", "Неверно"],
+      "I try to be nice to other people. I am attentive to their feelings",
+      answers: ["Agree", "Partially agree", "Disagree"],
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я неугомонный/ая, не могу долго оставаться спокойным/ой",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I'm restless, I can't stay calm for long",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "У меня часто бывают головные боли, боли в животе и тошнота",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I often have headaches, stomach pains and nausea",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я обычно делюсь с другими (едой, играми, ручками и др.)",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I usually share with others (food, money, etc.)",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я сильно сержусь, раздражаюсь и выхожу из себя",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I get very angry, annoyed and lose my temper",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
+    answers: ["Agree", "Partially agree", "Disagree"],
     question:
-      "Я обычно один/одна. Чаще всего я играю в одиночестве и занимаюсь сам/а",
+      "I am usually alone. Most often I play alone and enjoy being by myself",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
+    answers: ["Agree", "Partially agree", "Disagree"],
     answerWeight: [0, 1, 2],
-    question: "Я обычно делаю то, что мне говорят",
+    question: "I usually do what I'm told",
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я много беспокоюсь",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I feel anxious on a regular basis",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я пытаюсь помочь, если кто-нибудь расстроен, обижен или болен",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I try to help if anyone is upset, offended or sick",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я постоянно ерзаю и верчусь",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I constantly fidget with my surroundings and can't stand still.",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "У меня есть по крайней мере один хороший друг",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I have at least one good friend",
     answerWeight: [0, 1, 2],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
+    answers: ["Agree", "Partially agree", "Disagree"],
     question:
-      "Я много дерусь. Я могу заставить других людей делать то, что я хочу",
+      "I fight a lot. I can make other people do what I want",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
+    answers: ["Agree", "Partially agree", "Disagree"],
     question:
-      "Я часто чувствую себя несчастным/ой, унылым/ой, готов/а расплакаться",
+      "I often feel miserable, unhappy and dismotivated",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я обычно нравлюсь своим сверстникам",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I am liked by my peers",
     answerWeight: [0, 1, 2],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я легко отвлекаюсь, мне трудно сосредоточиться",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I am easily distracted and have difficulty concentrating",
     answerWeight: [2, 1, 0],
     category: hyperactive,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я нервничаю в новой обстановке, легко теряю уверенность",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I get nervous in new surroundings, lose confidence easily",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я добр/а к младшим детям",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I am kind to small kids",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Меня часто обвиняют во лжи или обмане",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I am often accused of lying and cheating",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Другие часто дразнят или задирают меня",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "Others often tease me in uncomfortable ways",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я часто вызываюсь помочь другим (родителям, учителям, детям)",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I often volunteer to help others (parents, teachers, children)",
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я думаю прежде чем действовать",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I think before I act.",
     answerWeight: [0, 1, 2],
     category: hyperactive,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я беру чужие вещи из дома, школы и других мест",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I take the things of others without permission at home, school or other places",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "У меня лучше отношения со взрослыми, чем со сверстниками",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I have a better relationship with older people than people my age",
     answerWeight: [2, 1, 0],
     category: communication,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
-    question: "Я многого боюсь, легко пугаюсь",
+    answers: ["Agree", "Partially agree", "Disagree"],
+    question: "I'm afraid of many things, I get scared easily",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
   {
-    answers: ["Верно", "Отчасти верно", "Неверно"],
+    answers: ["Agree", "Partially agree", "Disagree"],
     question:
-      "Я делаю до конца работу, которую начал/а. У меня хорошее внимание.",
+      "I complete the work that I started. I have a good attention span.",
     answerWeight: [0, 1, 2],
     category: hyperactive,
   },
@@ -308,7 +308,7 @@ const Index = (props) => {
 
       <View style={styles.selectContainer}>
         <View style={styles.infoContainer}>
-          <Text style={styles.selectText}>Выберите ответ✨</Text>
+          <Text style={styles.selectText}>Choose an answer✨</Text>
           <Text style={styles.questionText}>{questions[index].question}</Text>
           <View style={styles.answers}>
             {questions[index].answers.map((answer, ind) => (
@@ -370,7 +370,7 @@ const Index = (props) => {
                   : [styles.backText, styles.disabledText]
               }
             >
-              Назад
+              Back
             </Text>
           </TouchableOpacity>
           {loading ? (
@@ -408,7 +408,7 @@ const Index = (props) => {
                     : [styles.nextText, styles.disabledText]
                 }
               >
-                {index === questions.length - 1 ? "Закончить" : "Следующий"}
+                {index === questions.length - 1 ? "Finish" : "Next"}
               </Text>
             </TouchableOpacity>
           )}
