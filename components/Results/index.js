@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  ActivityIndicator,
+} from "react-native";
 import firebase from "firebase";
 import {
   Table,
@@ -11,8 +17,44 @@ import {
   Cell,
 } from "react-native-table-component";
 import styles from "./styles";
-import { FIREBASE_PATH_TESTS } from "../../constants/firebase";
+import {
+  FIREBASE_PATH_TESTS,
+  FIREBASE_PATH_USERS,
+} from "../../constants/firebase";
+import { TouchableOpacity } from "react-native";
+import { Feather } from "expo-vector-icons";
+import { primary } from "../colors";
+import ActionSheet from "react-native-actions-sheet";
+import { Picker } from "@react-native-picker/picker";
+import * as Haptics from "expo-haptics";
 const Index = (props) => {
+  const actionSheetRef = useRef(null);
+  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [loading, setLoading] = useState(false);
+  const [student, setStudent] = useState();
+
+  function sendBackupTest() {
+    actionSheetRef.current.hide();
+
+    setLoading(true);
+    console.log(props.route.params.studentId);
+
+    firebase
+      .firestore()
+      .collection(FIREBASE_PATH_USERS)
+      .doc(props.route.params.studentId)
+      .update({
+        pendingTests:
+          firebase.firestore.FieldValue.arrayUnion(selectedLanguage),
+      });
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    setLoading(false);
+  }
+
+  function showOptions() {
+    actionSheetRef.current.show();
+  }
+
   function translate(level) {
     // if (level === "barely normal") return "sərhəd";
     // else return level;
@@ -30,7 +72,16 @@ const Index = (props) => {
         const arr = snap.docs.map((s) => s.data());
         setData(arr);
       });
-  }, []);
+    firebase
+      .firestore()
+      .collection(FIREBASE_PATH_USERS)
+      .doc(props.route.params.studentId)
+      .get()
+      .then((snap) => {
+        const dt = snap.data();
+        setStudent(dt);
+      });
+  }, [loading]);
 
   if (data) {
     const state = {
@@ -49,6 +100,20 @@ const Index = (props) => {
       ];
     }
 
+    if (loading) {
+      return (
+        <SafeAreaView
+          style={{
+            flex: 1,
+            backgroundColor: "white",
+            justifyContent: "center",
+          }}
+        >
+          <ActivityIndicator animating size="large" color={primary} />
+        </SafeAreaView>
+      );
+    }
+
     return (
       <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
         <View style={styles.container}>
@@ -60,11 +125,85 @@ const Index = (props) => {
             />
             <Rows data={state.tableData} style={{}} textStyle={styles.text} />
           </Table>
+
+          {student && student.pendingTests && (
+            <View
+              style={{
+                alignSelf: "center",
+                paddingTop: 10,
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "bold",
+                }}
+              >
+                Pending Tests:
+              </Text>
+              {student.pendingTests.map((x) => (
+                <Text>{x}</Text>
+              ))}
+            </View>
+          )}
         </View>
+
+        <TouchableOpacity
+          style={{
+            padding: 10,
+            borderRadius: 99,
+            backgroundColor: primary,
+            width: 50,
+            height: 50,
+            right: 30,
+            bottom: 30,
+            position: "absolute",
+            justifyContent: "center",
+            zIndex: 10,
+          }}
+          onPress={() => showOptions()}
+        >
+          <Feather
+            name="more-vertical"
+            size={25}
+            color={"white"}
+            style={{
+              alignSelf: "center",
+            }}
+          />
+        </TouchableOpacity>
+
+        <ActionSheet ref={actionSheetRef}>
+          <Text style={styles.options}>Options</Text>
+
+          <View
+            style={{
+              marginTop: 10,
+            }}
+          >
+            <Picker
+              selectedValue={selectedLanguage}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedLanguage(itemValue)
+              }
+              style={{}}
+            >
+              <Picker.Item label="Despression" value="depression" />
+              <Picker.Item label="Anxiety" value="anxiety" />
+              <Picker.Item label="Anger, negativity" value="anger" />
+            </Picker>
+          </View>
+          <TouchableOpacity
+            style={styles.backupTestBtn}
+            onPress={sendBackupTest}
+          >
+            <Text style={styles.backupTestTxt}>Send Backup Test</Text>
+          </TouchableOpacity>
+        </ActionSheet>
       </SafeAreaView>
     );
   } else {
-    return <></>;
+    return <ActivityIndicator animating size="large" color={primary} />;
   }
 };
 

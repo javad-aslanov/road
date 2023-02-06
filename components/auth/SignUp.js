@@ -39,7 +39,7 @@ const SignUp = () => {
     } else if (password.length < 8) {
       Alert.alert("Password must be at least 8 characters long");
     } else if (!(code.length > 0)) {
-      Alert.alert("Enter the teacher code");
+      Alert.alert("Enter the psychologist code");
     } else {
       await firebase
         .auth()
@@ -76,7 +76,7 @@ const SignUp = () => {
               <TextInput onChangeText={setUsername} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Teacher Code</Text>
+              <Text style={styles.textInputLabel}>Psychologist Code</Text>
               <TextInput onChangeText={setCode} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>

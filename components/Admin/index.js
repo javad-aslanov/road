@@ -88,7 +88,7 @@ const Index = ({ user }) => {
             style={styles.shareBtn}
             onPress={async () => {
               const code = firebase.auth().currentUser.uid.substring(0, 5);
-              const msg = `Salam \n\nBu, "Road" proqramından istifadə etmək üçün tələbələrə eksklüziv dəvətdir.\nMüəllim kodumla qeydiyyatdan keçin!\n\nMüəllim kodu:${code}\n\nwww.roadapp.az`;
+              const msg = `Salam \n\nBu, "Road" proqramından istifadə etmək üçün tələbələrə eksklüziv dəvətdir.\nPsixoloq kodumla qeydiyyatdan keçin!\n\nMüəllim kodu:${code}\n\nwww.roadapp.az`;
               Share.share({
                 message: msg,
               });
