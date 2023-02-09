@@ -129,8 +129,10 @@ const Index = (props) => {
           {student && student.pendingTests && (
             <View
               style={{
-                alignSelf: "center",
-                paddingTop: 10,
+                borderRadius: 20,
+                borderWidth: 0.5,
+                padding: 10,
+                marginTop: 30,
               }}
             >
               <Text
@@ -139,10 +141,37 @@ const Index = (props) => {
                   fontWeight: "bold",
                 }}
               >
-                Pending Tests:
+                Tests:
               </Text>
+              <View
+                style={{
+                  widht: "100%",
+                  height: 0.5,
+                  backgroundColor: "black",
+                  marginVertical: 10,
+                }}
+              ></View>
+              {student.completedTests.map((x) => (
+                <View
+                  style={{
+                    justifyContent: "space-between",
+                    flexDirection: "row",
+                  }}
+                >
+                  <Text>{x === "initTest" ? t("general") : x}</Text>
+                  <Text>✅</Text>
+                </View>
+              ))}
               {student.pendingTests.map((x) => (
-                <Text>{x}</Text>
+                <View
+                  style={{
+                    justifyContent: "space-between",
+                    flexDirection: "row",
+                  }}
+                >
+                  <Text>{x[0].toUpperCase() + x.substring(1)}</Text>
+                  <Text>➖</Text>
+                </View>
               ))}
             </View>
           )}
@@ -174,7 +203,7 @@ const Index = (props) => {
         </TouchableOpacity>
 
         <ActionSheet ref={actionSheetRef}>
-          <Text style={styles.options}>Options</Text>
+          <Text style={styles.options}>{t("options")}</Text>
 
           <View
             style={{
@@ -190,14 +219,17 @@ const Index = (props) => {
             >
               <Picker.Item label="Despression" value="depression" />
               <Picker.Item label="Anxiety" value="anxiety" />
-              <Picker.Item label="Anger, negativity" value="anger" />
+              <Picker.Item
+                label="Traits (Anger, negativity, etc)"
+                value="traits"
+              />
             </Picker>
           </View>
           <TouchableOpacity
             style={styles.backupTestBtn}
             onPress={sendBackupTest}
           >
-            <Text style={styles.backupTestTxt}>Send Backup Test</Text>
+            <Text style={styles.backupTestTxt}>{t("sendbackup")}</Text>
           </TouchableOpacity>
         </ActionSheet>
       </SafeAreaView>

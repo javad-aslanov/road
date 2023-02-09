@@ -57,7 +57,7 @@ const Index = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  No chats yet...
+                  {t("nochatsyet")}
                 </Text>
               </View>
             )}

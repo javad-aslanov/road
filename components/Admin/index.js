@@ -12,6 +12,7 @@ import { FIREBASE_PATH_USERS } from "../../constants/firebase";
 import styles from "./styles";
 import { Feather } from "expo-vector-icons";
 import { StackActions, useNavigation } from "@react-navigation/native";
+import t from "../../i18n";
 const Index = ({ user }) => {
   const [students, setStudents] = useState([]);
   const nav = useNavigation();
@@ -40,7 +41,7 @@ const Index = ({ user }) => {
           paddingVertical: 30,
         }}
       >
-        Hello, {user.username}👋
+        {t("greeting")}, {user.username}👋
       </Text>
 
       <View
@@ -54,7 +55,7 @@ const Index = ({ user }) => {
             fontSize: 15,
           }}
         >
-          Students
+          {t("students")}
         </Text>
         <View>
           {students.map((student) => (
@@ -78,25 +79,12 @@ const Index = ({ user }) => {
                 >
                   <Text style={styles.studentBtnText}>
                     <Feather name="bar-chart" />
-                    Check progress
+                    {t("checkprog")}
                   </Text>
                 </TouchableOpacity>
               </View>
             </View>
           ))}
-          <TouchableOpacity
-            style={styles.shareBtn}
-            onPress={async () => {
-              const code = firebase.auth().currentUser.uid.substring(0, 5);
-              const msg = `Salam \n\nBu, "Road" proqramından istifadə etmək üçün tələbələrə eksklüziv dəvətdir.\nPsixoloq kodumla qeydiyyatdan keçin!\n\nMüəllim kodu:${code}\n\nwww.roadapp.az`;
-              Share.share({
-                message: msg,
-              });
-            }}
-          >
-            <Feather name="share-2" color="#fff" size={18} />
-            <Text style={styles.shareBtnText}>Invite students</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>

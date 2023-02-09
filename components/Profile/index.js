@@ -15,6 +15,7 @@ import { Feather } from "expo-vector-icons";
 import { primary, secondary } from "../colors";
 import { StackActions, useNavigation } from "@react-navigation/native";
 import { StreamChat } from "stream-chat";
+import t from "../../i18n";
 const client = StreamChat.getInstance("48v2teztftmy");
 
 const Index = () => {
@@ -64,7 +65,7 @@ const Index = () => {
         />
 
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Username</Text>
+          <Text style={styles.inputLabel}>{t("username")}</Text>
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>{user.username}</Text>
           </View>
@@ -74,21 +75,21 @@ const Index = () => {
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>
               {user.isTeacher
-                ? "Teacher 👨‍🏫"
+                ? t("teacher")
                 : user.isPsych
-                ? "Psychologist 🧑‍⚕️"
-                : "Student 🧑‍🎓"}
+                ? t("psychologist")
+                : t("student")}
             </Text>
           </View>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Birthday</Text>
+          <Text style={styles.inputLabel}>{t("birthday")}</Text>
           <View style={styles.input}>
             <Text style={{ color: "#A9A9A9" }}>{user.dateOfBirth}</Text>
           </View>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Password</Text>
+          <Text style={styles.inputLabel}>{t("password")}</Text>
           <TextInput style={styles.notDisabled} />
         </View>
 
@@ -99,7 +100,7 @@ const Index = () => {
           }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Sign Out</Text>
+          <Text style={styles.signOutText}>{t("signout")}</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );

@@ -9,17 +9,24 @@ import {
   Alert,
   ScrollView,
   KeyboardAvoidingView,
+  useColorScheme,
 } from "react-native";
 import DatePicker from "react-native-modern-datepicker";
 
-import styles from "./SignIn/styles";
+import stylez from "./SignIn/styles";
+import stylesdark from "./SignIn/stylesdark";
 import firebase from "firebase";
 import { StackActions, useNavigation } from "@react-navigation/native";
 import Svg, { G, Path } from "react-native-svg";
 import { primary } from "../colors";
 import { FIREBASE_PATH_USERS } from "../../constants/firebase";
+import t from "../../i18n";
 
 const SignUp = () => {
+  const scheme = useColorScheme();
+
+  let styles = stylez;
+  if (scheme === "dark") styles = stylesdark;
   function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -33,13 +40,13 @@ const SignUp = () => {
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const signUpUser = async () => {
     if (username.length <= 3) {
-      Alert.alert("Username must be at least 3 characters.");
+      Alert.alert(t("usernamemust"));
     } else if (password !== passwordRepeat) {
-      Alert.alert("Password and password repeat must be equal");
+      Alert.alert(t("passeqpassrep"));
     } else if (password.length < 8) {
-      Alert.alert("Password must be at least 8 characters long");
+      Alert.alert(t("passchar"));
     } else if (!(code.length > 0)) {
-      Alert.alert("Enter the psychologist code");
+      Alert.alert(t("enterpsych"));
     } else {
       await firebase
         .auth()
@@ -68,28 +75,37 @@ const SignUp = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{}}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Sign Up</Text>
+          <Text style={[styles.title, styles.text]}>{t("signup")}</Text>
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Username</Text>
+              <Text style={[styles.textInputLabel, styles.text]}>
+                {t("username")}
+              </Text>
               <TextInput onChangeText={setUsername} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Psychologist Code</Text>
+              <Text style={[styles.textInputLabel, styles.text]}>
+                {t("psychcode")}
+              </Text>
               <TextInput onChangeText={setCode} style={styles.textInput} />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Birthday</Text>
+              <Text style={[styles.textInputLabel, styles.text]}>
+                {t("birthday")}
+              </Text>
 
               <DatePicker
+                options={styles.datepicker}
                 mode="monthYear"
                 onSelectedChange={(date) => setDate(date)}
               />
             </View>
 
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Password</Text>
+              <Text style={[styles.textInputLabel, styles.text]}>
+                {t("password")}
+              </Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -97,7 +113,9 @@ const SignUp = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Password Repeat</Text>
+              <Text style={[styles.textInputLabel, styles.text]}>
+                {t("repeatpass")}
+              </Text>
               <TextInput
                 onChangeText={setPasswordRepeat}
                 secureTextEntry
@@ -106,18 +124,21 @@ const SignUp = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signUpUser}>
-              <Text style={styles.btnText}>Sign Up</Text>
+              <Text style={styles.btnText}>{t("signup")}</Text>
             </TouchableOpacity>
           </View>
 
           <TouchableWithoutFeedback onPress={navToSignIn}>
             <Text
-              style={{
-                color: "black",
-                alignSelf: "center",
-              }}
+              style={[
+                {
+                  color: "black",
+                  alignSelf: "center",
+                },
+                styles.text,
+              ]}
             >
-              Have an account? <Text style={{ color: primary }}>Sign In</Text>
+              <Text style={{ color: primary }}>{t("signin")}</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>

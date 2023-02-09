@@ -9,12 +9,18 @@ import {
   Alert,
   ScrollView,
 } from "react-native";
-import styles from "./styles";
+import stylez from "./styles";
 import firebase from "firebase";
 import { StackActions, useNavigation } from "@react-navigation/native";
 import Svg, { G, Path } from "react-native-svg";
 import { primary } from "../../colors";
+import { useColorScheme } from "react-native";
+import stylesdark from "./stylesdark";
+import t from "../../../i18n";
 const SignIn = () => {
+  const scheme = useColorScheme();
+  let styles = stylez;
+  if (scheme === "dark") styles = stylesdark;
   const nav = useNavigation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +43,9 @@ const SignIn = () => {
 
           <View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Username</Text>
+              <Text style={[styles.textInputLabel, styles.text]}>
+                {t("username")}
+              </Text>
               <TextInput
                 onChangeText={setUsername}
                 placeholderTextColor="white"
@@ -47,7 +55,9 @@ const SignIn = () => {
               />
             </View>
             <View style={styles.textInputContainer}>
-              <Text style={styles.textInputLabel}>Password</Text>
+              <Text style={[styles.textInputLabel, styles.text]}>
+                {t("password")}
+              </Text>
               <TextInput
                 onChangeText={setPassword}
                 secureTextEntry
@@ -59,19 +69,22 @@ const SignIn = () => {
             </View>
 
             <TouchableOpacity style={styles.btn} onPress={signInUser}>
-              <Text style={styles.btnText}>Sign In</Text>
+              <Text style={styles.btnText}>{t("signin")}</Text>
             </TouchableOpacity>
           </View>
 
           <TouchableWithoutFeedback onPress={navToSignUp}>
             <Text
-              style={{
-                color: "black",
-                alignSelf: "center",
-              }}
+              style={[
+                {
+                  color: "black",
+                  alignSelf: "center",
+                },
+                styles.text,
+              ]}
             >
-              Don't have an account?{" "}
-              <Text style={{ color: primary }}>Sign Up</Text>
+              {t("donthaveacc") + " "}
+              <Text style={{ color: primary }}>{t("signup")}</Text>
             </Text>
           </TouchableWithoutFeedback>
         </View>

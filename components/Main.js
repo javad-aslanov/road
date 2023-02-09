@@ -30,6 +30,7 @@ import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PSYCH_ID } from "../constants/others";
 import { StreamChat } from "stream-chat";
+import t from "../i18n";
 
 const client = StreamChat.getInstance("48v2teztftmy");
 const Main = () => {
@@ -80,7 +81,7 @@ const Main = () => {
               paddingVertical: 30,
             }}
           >
-            Hi, {user.username}👋
+            {t("greeting")}, {user.username}👋
           </Text>
 
           <View
@@ -94,13 +95,12 @@ const Main = () => {
                 fontSize: 20,
               }}
             >
-              Tests
+              {t("tests")}
             </Text>
             <FlatList
-              data={[0]}
+              data={user.pendingTests}
               renderItem={({ item, index }) => {
                 const name = item.name;
-                const length = item.length;
                 const isCompleted = user.completedTests
                   ? user.completedTests.length > 0
                   : false;
@@ -121,14 +121,16 @@ const Main = () => {
                         alignSelf: "center",
                       }}
                     >
-                      Diagnostic
+                      {t("diagnostic")}
                     </WhiteText>
                     <WhiteText
                       style={{
                         alignSelf: "center",
                       }}
                     >
-                      ∼5 mins⏰
+                      {"∼"}
+                      {t("mins")}
+                      {"⏰"}
                     </WhiteText>
                     {/* <WhiteText>
                     {isCompleted ? "Tamamlandı" : "Tamamlanmadı"}
@@ -147,7 +149,7 @@ const Main = () => {
                       }}
                     >
                       <Text style={{ fontWeight: "bold", color: primary }}>
-                        {isCompleted ? "Retry" : "Start"}
+                        {isCompleted ? t("retry") : t("start")}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -167,7 +169,7 @@ const Main = () => {
                 fontSize: 20,
               }}
             >
-              Need help?
+              {t("needhelp")}
             </Text>
             <>
               <View
@@ -186,7 +188,7 @@ const Main = () => {
                     alignSelf: "center",
                   }}
                 >
-                  Talk to a professional💬
+                  {t("talktoprof")}
                 </WhiteText>
 
                 <TouchableOpacity
@@ -211,7 +213,7 @@ const Main = () => {
                   }}
                 >
                   <Text style={{ fontWeight: "bold", color: primary }}>
-                    Start
+                    {t("start")}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -231,7 +233,7 @@ const Main = () => {
                     alignSelf: "center",
                   }}
                 >
-                  Hot Line☎️
+                  {t("hotline")}
                 </WhiteText>
 
                 {/* <WhiteText>
@@ -254,7 +256,7 @@ const Main = () => {
                   }}
                 >
                   <Text style={{ fontWeight: "bold", color: primary }}>
-                    Call
+                    {t("call")}
                   </Text>
                 </TouchableOpacity>
               </View>

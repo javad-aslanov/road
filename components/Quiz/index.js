@@ -18,6 +18,7 @@ import {
   FIREBASE_PATH_TESTS,
   FIREBASE_PATH_USERS,
 } from "../../constants/firebase";
+import t from "../../i18n";
 
 function determineLevel(x) {
   var level = "";
@@ -78,7 +79,7 @@ const initialQuestions = [
   {
     question:
       "I try to be nice to other people. I am attentive to their feelings",
-      answers: ["Agree", "Partially agree", "Disagree"],
+    answers: ["Agree", "Partially agree", "Disagree"],
     answerWeight: [2, 1, 0],
     category: prosocial,
   },
@@ -145,15 +146,13 @@ const initialQuestions = [
   },
   {
     answers: ["Agree", "Partially agree", "Disagree"],
-    question:
-      "I fight a lot. I can make other people do what I want",
+    question: "I fight a lot. I can make other people do what I want",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
     answers: ["Agree", "Partially agree", "Disagree"],
-    question:
-      "I often feel miserable, unhappy and dismotivated",
+    question: "I often feel miserable, unhappy and dismotivated",
     answerWeight: [2, 1, 0],
     category: emotional,
   },
@@ -207,13 +206,15 @@ const initialQuestions = [
   },
   {
     answers: ["Agree", "Partially agree", "Disagree"],
-    question: "I take the things of others without permission at home, school or other places",
+    question:
+      "I take the things of others without permission at home, school or other places",
     answerWeight: [2, 1, 0],
     category: behaviour,
   },
   {
     answers: ["Agree", "Partially agree", "Disagree"],
-    question: "I have a better relationship with older people than people my age",
+    question:
+      "I have a better relationship with older people than people my age",
     answerWeight: [2, 1, 0],
     category: communication,
   },
@@ -269,6 +270,7 @@ const Index = (props) => {
       userId: firebase.auth().currentUser.uid,
       scores: result,
       date: firebase.firestore.FieldValue.serverTimestamp(),
+      type: "General Checkup.",
     });
     setLoading(false);
     nav.dispatch(StackActions.popToTop());
@@ -308,7 +310,7 @@ const Index = (props) => {
 
       <View style={styles.selectContainer}>
         <View style={styles.infoContainer}>
-          <Text style={styles.selectText}>Choose an answer✨</Text>
+          <Text style={styles.selectText}>{t("chooseanswer")}</Text>
           <Text style={styles.questionText}>{questions[index].question}</Text>
           <View style={styles.answers}>
             {questions[index].answers.map((answer, ind) => (
@@ -370,7 +372,7 @@ const Index = (props) => {
                   : [styles.backText, styles.disabledText]
               }
             >
-              Back
+              {t("back")}
             </Text>
           </TouchableOpacity>
           {loading ? (
@@ -408,7 +410,7 @@ const Index = (props) => {
                     : [styles.nextText, styles.disabledText]
                 }
               >
-                {index === questions.length - 1 ? "Finish" : "Next"}
+                {index === questions.length - 1 ? t("finish") : t("next")}
               </Text>
             </TouchableOpacity>
           )}

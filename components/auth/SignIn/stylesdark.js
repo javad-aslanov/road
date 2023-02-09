@@ -1,9 +1,20 @@
 import { StyleSheet } from "react-native";
-import { AZURE_BLUE, BABY_BLUE } from "../../../constants/colors";
-import { primary } from "../../colors";
+import { darkmodebg, primary } from "../../colors";
 
 export default StyleSheet.create({
-  datepicker: {},
+  datepicker: {
+    backgroundColor: darkmodebg,
+    textHeaderColor: primary,
+    textDefaultColor: "#F6E7C1",
+    selectedTextColor: "#fff",
+    mainColor: primary,
+    textSecondaryColor: primary,
+    borderColor: "rgba(122, 146, 165, 0.1)",
+  },
+
+  text: {
+    color: "white",
+  },
   textInput: {
     padding: 7,
     borderWidth: 0.5,
@@ -13,18 +24,18 @@ export default StyleSheet.create({
     borderRadius: 7,
     borderColor: "lightgrey",
     marginVertical: 7,
-    color: "black",
+    color: "white",
   },
 
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: darkmodebg,
   },
   title: {
     fontSize: 28,
     fontWeight: "bold",
     paddingBottom: 10,
-    color: "black",
+    color: "white",
   },
   textInputLabel: {
     color: "black",
@@ -51,5 +62,7 @@ export default StyleSheet.create({
     fontWeight: "bold",
     fontSize: 15,
   },
-  text: {},
+  text: {
+    color: "white",
+  },
 });

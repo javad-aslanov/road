@@ -12,6 +12,7 @@ import {
 import styles from "./styles";
 import firebase from "firebase";
 import { StackActions, useNavigation } from "@react-navigation/native";
+import t from "../../i18n";
 
 const Index = () => {
   const nav = useNavigation();
@@ -21,9 +22,9 @@ const Index = () => {
   if (!loading) {
     return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title2}>Change Password</Text>
+        <Text style={styles.title2}>{t("changepass")}</Text>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>New Password</Text>
+          <Text style={styles.inputLabel}>{t("newpass")}</Text>
           <TextInput
             secureTextEntry
             onChangeText={(t) => setNewPassword(t)}
@@ -31,7 +32,7 @@ const Index = () => {
           ></TextInput>
         </View>
         <View style={styles.inputView}>
-          <Text style={styles.inputLabel}>Repeat New Password</Text>
+          <Text style={styles.inputLabel}>{t("repeatnewpass")}</Text>
           <TextInput
             secureTextEntry
             onChangeText={(t) => setNewPasswordRepeat(t)}
@@ -41,17 +42,15 @@ const Index = () => {
 
         <TouchableOpacity
           onPress={() => {
-            Alert.alert("Are you sure, that you want to change your password?", "", [
+            Alert.alert(t("areusure"), "", [
               {
-                text: "Yes",
+                text: t("yes"),
                 style: "destructive",
                 onPress: async () => {
                   if (newPassword !== newPasswordRepeat) {
-                    Alert.alert(
-                      "Password and repeat password must have the same value"
-                    );
+                    Alert.alert(t("passwordrep"));
                   } else if (newPassword.length < 8) {
-                    Alert.alert("Password must be at least 8 characters");
+                    Alert.alert(t("passchar"));
                   } else {
                     setLoading(true);
                     await firebase
@@ -66,22 +65,22 @@ const Index = () => {
                 },
               },
               {
-                text: "No",
+                text: t("no"),
                 style: "cancel",
               },
             ]);
           }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Change password</Text>
+          <Text style={styles.signOutText}>{t("changepass")}</Text>
         </TouchableOpacity>
 
-        <Text style={styles.title2}>Delete account</Text>
+        <Text style={styles.title2}>{t("deleteacc")}</Text>
         <TouchableOpacity
           onPress={() => {
-            Alert.alert("Are you sure, that you want to delete your account?", "", [
+            Alert.alert(t("areudelete"), "", [
               {
-                text: "Yes",
+                text: t("yes"),
                 style: "destructive",
                 onPress: async () => {
                   setLoading(true);
@@ -95,14 +94,14 @@ const Index = () => {
                 },
               },
               {
-                text: "No",
+                text: t("no"),
                 style: "cancel",
               },
             ]);
           }}
           style={styles.signOutBtn}
         >
-          <Text style={styles.signOutText}>Delete account</Text>
+          <Text style={styles.signOutText}>{t("deleteacc")}</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );

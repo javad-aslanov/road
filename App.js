@@ -7,13 +7,6 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { OverlayProvider } from "stream-chat-expo";
 import { AppRegistry } from "react-native";
 import React, { useState, useEffect } from "react";
-import {
-  ActivityIndicator,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
 import Results from "./components/Results";
 import {
   NavigationContainer,
@@ -23,13 +16,11 @@ import {
 import Tabs from "./components/Tabs";
 import firebase from "firebase";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Main from "./components/Main";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import Quiz from "./components/Quiz";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { primary } from "./components/colors";
-
+import { getLocales } from "expo-localization";
+import t from "./i18n";
 const firebaseConfig = {
   apiKey: "AIzaSyByYPKLWwts8c3ZGi_PWcca0ScIDzBYkVM",
   authDomain: "road-f380a.firebaseapp.com",
@@ -101,7 +92,10 @@ export default function App() {
   //       console.log();
   //     }
   //     console.log("end");
-  //   });
+  //   })
+
+  console.log(t("hello"));
+
   return (
     <OverlayProvider>
       <StatusBar style="dark" />
