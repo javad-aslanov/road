@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import firebase from "firebase";
+import t from "../../i18n";
 import {
   Table,
   TableWrapper,

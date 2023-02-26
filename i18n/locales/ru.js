@@ -1,6 +1,12 @@
+const emotional = "emotional";
+const behaviour = "behaviour";
+const hyperactive = "hyperactive";
+const communication = "communication";
+const prosocial = "prosocial";
+
 const ru = {
   greeting: "Привет",
-  tests: "Языки",
+  tests: "Тесты",
   diagnostic: "Диагностика",
   mins: "5 минут",
   start: "Начать",
@@ -45,7 +51,164 @@ const ru = {
   signin: "Войти",
   signup: "Зарегистрироваться",
   psychcode: "Код психолога",
-  repeatpass: " Повторите пароль",
+  repeatpass: "Повторите пароль",
+  test: [
+    {
+      question:
+        "Я стараюсь быть хорошим/ей c другими людьми. Я внимателен/на к их чувствам",
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      answerWeight: [2, 1, 0],
+      category: prosocial,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я неугомонный/ая, не могу долго оставаться спокойным/ой",
+      answerWeight: [2, 1, 0],
+      category: hyperactive,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "У меня часто бывают головные боли, боли в животе и тошнота",
+      answerWeight: [2, 1, 0],
+      category: emotional,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я обычно делюсь с другими (едой, играми, ручками и др.)",
+      answerWeight: [2, 1, 0],
+      category: prosocial,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я сильно сержусь, раздражаюсь и выхожу из себя",
+      answerWeight: [2, 1, 0],
+      category: behaviour,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question:
+        "Я обычно один/одна. Чаще всего я играю в одиночестве и занимаюсь сам/а",
+      answerWeight: [2, 1, 0],
+      category: communication,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      answerWeight: [0, 1, 2],
+      question: "Я обычно делаю то, что мне говорят",
+      category: behaviour,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я много беспокоюсь",
+      answerWeight: [2, 1, 0],
+      category: emotional,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я пытаюсь помочь, если кто-нибудь расстроен, обижен или болен",
+      answerWeight: [2, 1, 0],
+      category: prosocial,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я постоянно ерзаю и верчусь",
+      answerWeight: [2, 1, 0],
+      category: hyperactive,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "У меня есть по крайней мере один хороший друг",
+      answerWeight: [0, 1, 2],
+      category: communication,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question:
+        "Я много дерусь. Я могу заставить других людей делать то, что я хочу",
+      answerWeight: [2, 1, 0],
+      category: behaviour,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question:
+        "Я часто чувствую себя несчастным/ой, унылым/ой, готов/а расплакаться",
+      answerWeight: [2, 1, 0],
+      category: emotional,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я обычно нравлюсь своим сверстникам",
+      answerWeight: [0, 1, 2],
+      category: communication,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я легко отвлекаюсь, мне трудно сосредоточиться",
+      answerWeight: [2, 1, 0],
+      category: hyperactive,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я нервничаю в новой обстановке, легко теряю уверенность",
+      answerWeight: [2, 1, 0],
+      category: emotional,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я добр/а к младшим детям",
+      answerWeight: [2, 1, 0],
+      category: prosocial,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Меня часто обвиняют во лжи или обмане",
+      answerWeight: [2, 1, 0],
+      category: behaviour,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Другие часто дразнят или задирают меня",
+      answerWeight: [2, 1, 0],
+      category: communication,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я часто вызываюсь помочь другим (родителям, учителям, детям)",
+      answerWeight: [2, 1, 0],
+      category: prosocial,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я думаю прежде чем действовать",
+      answerWeight: [0, 1, 2],
+      category: hyperactive,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я беру чужие вещи из дома, школы и других мест",
+      answerWeight: [2, 1, 0],
+      category: behaviour,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "У меня лучше отношения со взрослыми, чем со сверстниками",
+      answerWeight: [2, 1, 0],
+      category: communication,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question: "Я многого боюсь, легко пугаюсь",
+      answerWeight: [2, 1, 0],
+      category: emotional,
+    },
+    {
+      answers: ["Верно", "Отчасти верно", "Неверно"],
+      question:
+        "Я делаю до конца работу, которую начал/а. У меня хорошее внимание.",
+      answerWeight: [0, 1, 2],
+      category: hyperactive,
+    },
+  ],
 };
 
 export default ru;

@@ -35,6 +35,7 @@ import t from "../i18n";
 const client = StreamChat.getInstance("48v2teztftmy");
 const Main = () => {
   const [user, setUser] = useState();
+
   useEffect(() => {
     const unsub = firebase
       .firestore()
@@ -98,7 +99,11 @@ const Main = () => {
               {t("tests")}
             </Text>
             <FlatList
-              data={user.pendingTests}
+              data={
+                user.completedTests.length > 0
+                  ? user.pendingTests
+                  : ["initTest"]
+              }
               renderItem={({ item, index }) => {
                 const name = item.name;
                 const isCompleted = user.completedTests
@@ -132,9 +137,7 @@ const Main = () => {
                       {t("mins")}
                       {"⏰"}
                     </WhiteText>
-                    {/* <WhiteText>
-                    {isCompleted ? "Tamamlandı" : "Tamamlanmadı"}
-                  </WhiteText> */}
+
                     <TouchableOpacity
                       onPress={() => {
                         nav.dispatch(StackActions.push("Quiz", {}));

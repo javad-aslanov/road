@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { View, StyleSheet, Animated } from "react-native";
-
 import { AZURE_BLUE } from "../../constants/colors";
 const Index = ({ steps, step, height }) => {
   const animatedValue = useRef(new Animated.Value(-1000)).current;

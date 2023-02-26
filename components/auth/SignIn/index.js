@@ -20,7 +20,7 @@ import t from "../../../i18n";
 const SignIn = () => {
   const scheme = useColorScheme();
   let styles = stylez;
-  if (scheme === "dark") styles = stylesdark;
+  if (scheme === "dark") styles = stylez;
   const nav = useNavigation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +39,7 @@ const SignIn = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 10, justifyContent: "space-evenly" }}>
-          <Text style={styles.title}>Sign In</Text>
+          <Text style={styles.title}>{t("signin")}</Text>
 
           <View>
             <View style={styles.textInputContainer}>

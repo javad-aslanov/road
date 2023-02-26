@@ -26,7 +26,7 @@ const SignUp = () => {
   const scheme = useColorScheme();
 
   let styles = stylez;
-  if (scheme === "dark") styles = stylesdark;
+  if (scheme === "dark") styles = stylez;
   function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);

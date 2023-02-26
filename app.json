@@ -3,7 +3,7 @@
     "owner": "javad.aslanov",
     "name": "road",
     "slug": "road",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -18,12 +18,14 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.javad.aslanov.road"
+      "bundleIdentifier": "com.javad.aslanov.road",
+      "buildNumber": 2
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "versionCode": 2
       },
       "package": "com.javad.aslanov.road"
     },
